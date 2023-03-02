@@ -4,7 +4,7 @@ import DefaultContext from './DefaultContext';
 
 function DefaultProvider({ children }) {
   return (
-    <DefaultContext.Provider value={ undefined }>
+    <DefaultContext.Provider value={ { history: undefined } }>
       {children}
     </DefaultContext.Provider>
   );
