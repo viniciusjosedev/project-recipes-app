@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { fetchRecipes } from '../services/foodAndDrink';
+import { useContext, useState } from 'react';
+import DefaultContext from '../context/DefaultContext';
 
 function SearchBar() {
   const [inputRadio, setInputRadio] = useState({});
   const [searchWord, setSearchWord] = useState('');
 
-  const handleSearch = async () => {
-    console.log(await fetchRecipes(inputRadio, searchWord));
+  const { executeSearch } = useContext(DefaultContext);
+
+  const handleSearch = () => {
+    executeSearch(inputRadio, searchWord, 'food');
   };
 
   return (
