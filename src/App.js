@@ -7,6 +7,7 @@ function App() {
   return (
     <Switch>
       <Route exact path="/" component={ LoginScreen } />
+      <Route exact path="/meals" component={ Recipes } />
     </Switch>
 
   );
