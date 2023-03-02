@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function LoginScreen() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const validation = (inputEmail, inputPassword) => {
+    const regexEmail = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/i;
+    const minPassword = 6;
+    return (!(regexEmail.test(inputEmail) && inputPassword.length > minPassword));
+  };
+  const handleEmail = ({ target: { value } }) => {
+    setEmail(value);
+  };
+
+  const handlePassword = ({ target: { value } }) => {
+    setPassword(value);
+  };
+
+  const saveLocalStorage = () => {
+    localStorage.setItem('user', JSON.stringify(({ email })));
+  };
+
   return (
     <form>
 
@@ -14,6 +34,7 @@ function LoginScreen() {
           id="email"
           placeholder="Digite o e-mail"
           data-testid="email-input"
+          onChange={ handleEmail }
         />
       </label>
 
@@ -27,12 +48,15 @@ function LoginScreen() {
           id="password"
           data-testid="password-input"
           placeholder="Digite a senha"
+          onChange={ handlePassword }
         />
       </label>
 
       <button
         type="button"
         data-testid="login-submit-btn"
+        disabled={ validation(email, password) }
+        onClick={ saveLocalStorage }
       >
         Enter
       </button>
