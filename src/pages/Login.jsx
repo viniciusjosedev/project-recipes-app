@@ -1,10 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import DefaultContext from '../context/DefaultContext';
 
 function Login({ history: { push } }) {
-  const { searchWord } = useContext(DefaultContext);
-  console.log(searchWord);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
