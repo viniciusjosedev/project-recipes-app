@@ -13,7 +13,7 @@ describe('All tests from Header', () => {
     useEvent.click(screen.getByTestId('profile-top-btn'));
     history.push('/meals');
     await waitFor(() => {
-      userEvent.click(screen.getByTestId('search-top-btn'));
+      useEvent.click(screen.getByTestId('search-top-btn'));
     }, { timeout: 5000 });
   }, 30000);
 });

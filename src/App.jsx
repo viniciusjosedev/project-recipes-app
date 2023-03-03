@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route } from 'react-router-dom';
-import LoginScreen from './pages/LoginScreen';
+import Login from './pages/Login';
 // import DefaultProvider from './context/DefaultProvider';
 import Header from './components/Header';
 
@@ -12,7 +12,7 @@ function App() {
         exact
         path="/"
         render={ (props) => (
-          <LoginScreen { ...props } />
+          <Login { ...props } />
         ) }
       />
       <Route
@@ -20,6 +20,7 @@ function App() {
         path="/meals"
         render={ (props) => (
           <Header { ...props } />
+
         ) }
       />
       <Route
@@ -33,28 +34,28 @@ function App() {
         exact
         path="/meals/:id-da-receita"
         render={ (props) => (
-          <LoginScreen { ...props } />
+          <Login { ...props } />
         ) }
       />
       <Route
         exact
         path="/drinks/:id-da-receita"
         render={ (props) => (
-          <LoginScreen { ...props } />
+          <Login { ...props } />
         ) }
       />
       <Route
         exact
         path="/meals/:id-da-receita/in-progress"
         render={ (props) => (
-          <LoginScreen { ...props } />
+          <Login { ...props } />
         ) }
       />
       <Route
         exact
         path="/drinks/:id-da-receita/in-progress"
         render={ (props) => (
-          <LoginScreen { ...props } />
+          <Login { ...props } />
         ) }
       />
       <Route
