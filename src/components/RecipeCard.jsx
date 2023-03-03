@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link } from 'react-router-dom';
 
 function RecipeCard({ cardData: { recipe, index, pathname } }) {
   const category = pathname
@@ -11,7 +11,10 @@ function RecipeCard({ cardData: { recipe, index, pathname } }) {
   };
 
   return (
-    <Link to={ `/${category.toLocaleLowerCase()}/${recipe[`id${category}`]}` }>
+    <Link
+      to={ `/${pathname.split('/')[1]
+        .toLocaleLowerCase()}/${recipe[`id${category}`]}` }
+    >
       <div data-testid={ `${index}-recipe-card` } key={ index }>
         <img
           src={ recipe[propretyNames.thumb] }

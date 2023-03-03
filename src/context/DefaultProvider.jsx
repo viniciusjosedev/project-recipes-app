@@ -16,11 +16,17 @@ function DefaultProvider({ children }) {
     }
   }, [searchWord]);
 
+  const init = async (path) => {
+    const searchResults = await fetchRecipes(path);
+    setSearchedRecipes(searchResults);
+  };
+
   const values = useMemo(() => ({
     searchedRecipes,
     searchWord,
     setSearchWord,
     executeSearch,
+    init,
   }), [searchedRecipes, searchWord, setSearchWord, executeSearch]);
 
   return (
