@@ -27,42 +27,45 @@ function Login({ history: { push } }) {
   };
 
   return (
-    <form>
-      <label
-        htmlFor="email"
-      >
-        Email:
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Digite o e-mail"
-          data-testid="email-input"
-          onChange={ handleEmail }
-        />
-      </label>
-      <label
-        htmlFor="password"
-      >
-        Senha:
-        <input
-          type="password"
-          name="password"
-          id="password"
-          data-testid="password-input"
-          placeholder="Digite a senha"
-          onChange={ handlePassword }
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ validation(email, password) }
-        onClick={ saveLocalStorage }
-      >
-        Enter
-      </button>
-    </form>
+    <div>
+      <form>
+        <label
+          htmlFor="email"
+        >
+          Email:
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Digite o e-mail"
+            data-testid="email-input"
+            onChange={ handleEmail }
+          />
+        </label>
+        <label
+          htmlFor="password"
+        >
+          Senha:
+          <input
+            type="password"
+            name="password"
+            id="password"
+            data-testid="password-input"
+            placeholder="Digite a senha"
+            onChange={ handlePassword }
+          />
+        </label>
+        <button
+          type="button"
+          data-testid="login-submit-btn"
+          disabled={ validation(email, password) }
+          onClick={ saveLocalStorage }
+        >
+          Enter
+        </button>
+      </form>
+
+    </div>
   );
 }
 
