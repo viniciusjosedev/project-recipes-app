@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
 import DefaultContext from '../context/DefaultContext';
 import SearchBar from '../components/SearchBar';
-import RecipeCard from '../components/RecipeCard';
 import Header from '../components/Header';
+import Recipes from '../components/Recipes';
 
 function Search(props) {
   const { searchedRecipes } = useContext(DefaultContext);
@@ -34,10 +34,7 @@ function Search(props) {
       <SearchBar />
       {
         renderRecipes.length > 1
-        && (
-          renderRecipes.map((recipe, index) => (
-            <RecipeCard key={ index } cardData={ { recipe, index, pathname } } />
-          )))
+        && (<Recipes renderRecipes={ renderRecipes } />)
       }
     </div>
   );
