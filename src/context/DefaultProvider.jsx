@@ -5,20 +5,23 @@ import { fetchRecipes } from '../services/foodAndDrink';
 
 function DefaultProvider({ children }) {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
+  const [searchWord, setSearchWord] = useState('');
 
-  const executeSearch = useCallback(async (searchType, searchWord, category) => {
-    const searchResults = await fetchRecipes(searchType, searchWord, category);
-
-    if (searchResults.length === 0) {
-      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+  const executeSearch = useCallback(async (searchType, category) => {
+    try {
+      const searchResults = await fetchRecipes(searchType, searchWord, category);
+      setSearchedRecipes(searchResults);
+    } catch (e) {
+      global.alert(e.message);
     }
-    setSearchedRecipes(searchResults);
-  }, []);
+  }, [searchWord]);
 
   const values = useMemo(() => ({
     searchedRecipes,
+    searchWord,
+    setSearchWord,
     executeSearch,
-  }), [searchedRecipes, executeSearch]);
+  }), [searchedRecipes, searchWord, setSearchWord, executeSearch]);
 
   return (
     <DefaultContext.Provider value={ values }>

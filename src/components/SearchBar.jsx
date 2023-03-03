@@ -4,28 +4,21 @@ import DefaultContext from '../context/DefaultContext';
 
 function SearchBar() {
   const [inputRadio, setInputRadio] = useState({});
-  const [searchWord, setSearchWord] = useState('');
   const { pathname } = useLocation();
 
-  const { executeSearch } = useContext(DefaultContext);
+  const { executeSearch, searchWord } = useContext(DefaultContext);
 
   const handleSearch = () => {
     if (inputRadio.option === 'firstLetter' && searchWord.length > 1) {
       global.alert('Your search must have only 1 (one) character');
     }
-    const categorySearch = pathname.split('/')[2];
-    executeSearch(inputRadio, searchWord, categorySearch);
+    const categorySearch = pathname.split('/')[1];
+    executeSearch(inputRadio, categorySearch);
   };
 
   return (
     <div>
       <h1>Pesquisa</h1>
-      <input
-        type="text"
-        placeholder="termo de busca"
-        value={ searchWord }
-        onChange={ ({ target: { value } }) => setSearchWord(value) }
-      />
       <label>
         ingrediente
         <input

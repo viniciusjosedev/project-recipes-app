@@ -8,6 +8,12 @@ export const fetchRecipes = async (searchType, searchWord, category) => {
   const response = await fetch(
     `${categoryUrl}${pathOption}.php?${searchType.letter}=${searchWord}`,
   );
+
+  if (!response.ok) {
+    console.log('oi');
+    throw new Error('Sorry, we haven\'t found any recipes for these filters.');
+  }
+
   const data = await response.json();
   return data[category];
 };

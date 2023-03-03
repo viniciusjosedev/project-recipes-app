@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 function RecipeCard({ cardData: { recipe, index, pathname } }) {
   const category = pathname
-    .split('/')[2] === 'drinks' ? 'Drink' : 'Meal';
+    .split('/')[1] === 'drinks' ? 'Drink' : 'Meal';
 
   const propretyNames = {
     thumb: `str${category}Thumb`,
@@ -11,7 +11,11 @@ function RecipeCard({ cardData: { recipe, index, pathname } }) {
 
   return (
     <div data-testid={ `${index}-recipe-card` } key={ index }>
-      <img src={ recipe[propretyNames.thumb] } alt={ recipe[propretyNames.name] } />
+      <img
+        src={ recipe[propretyNames.thumb] }
+        alt={ recipe[propretyNames.name] }
+        data-testid={ `${index}-card-img` }
+      />
       <p data-testid={ `${index}-card-name` }>
         { recipe[propretyNames.name] }
       </p>
