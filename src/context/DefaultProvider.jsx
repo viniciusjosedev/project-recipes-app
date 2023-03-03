@@ -6,9 +6,12 @@ import { fetchRecipes } from '../services/foodAndDrink';
 function DefaultProvider({ children }) {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
 
-  const executeSearch = useCallback(async (inputRadio, searchWord, category) => {
-    const searchResults = await fetchRecipes(inputRadio, searchWord, category);
-    console.log(searchResults);
+  const executeSearch = useCallback(async (searchType, searchWord, category) => {
+    const searchResults = await fetchRecipes(searchType, searchWord, category);
+
+    if (searchResults.length === 0) {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    }
     setSearchedRecipes(searchResults);
   }, []);
 
