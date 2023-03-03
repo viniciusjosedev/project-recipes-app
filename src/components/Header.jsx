@@ -5,6 +5,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import funcNameHeader from '../helpers/nameHeader';
 import DefaultContext from '../context/DefaultContext';
+import style from '../styles/css/Header.module.css';
 
 function Header({ history: { location: { pathname } } }) {
   const [nameHeader, setNameHeader] = useState(['']);
@@ -20,7 +21,7 @@ function Header({ history: { location: { pathname } } }) {
   }, [pathname]);
 
   return (
-    <header>
+    <header className={ style.header } id={ style.teste }>
       <h1 data-testid="page-title">{nameHeader[0]}</h1>
       <Link to="/profile">
         {' '}
