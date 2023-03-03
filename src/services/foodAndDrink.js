@@ -29,3 +29,15 @@ export const fetchRecipes = async (searchType, searchWord, category) => {
 
   return data[category];
 };
+
+export const fetchDetails = async (category, id) => {
+  if (category === 'meals') {
+    const requisicao = await (await fetch(`${BASE_URL_FOOD}lookup.php?i=${id}`)).json();
+    return requisicao[category][0];
+  }
+
+  if (category === 'drinks') {
+    const requisicao = await (await fetch(`${BASE_URL_DRINK}lookup.php?i=${id}`)).json();
+    return requisicao[category][0];
+  }
+};
