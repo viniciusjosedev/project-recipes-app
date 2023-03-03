@@ -3,8 +3,9 @@ import React from 'react';
 import DefaultContext from './DefaultContext';
 
 function DefaultProvider({ children }) {
+  const defaultValue = React.useMemo(() => ({ history: undefined }), []);
   return (
-    <DefaultContext.Provider value={ { history: undefined } }>
+    <DefaultContext.Provider value={ defaultValue }>
       {children}
     </DefaultContext.Provider>
   );
