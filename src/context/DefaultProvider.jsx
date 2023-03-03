@@ -12,7 +12,7 @@ function DefaultProvider({ children }) {
       const searchResults = await fetchRecipes(searchType, searchWord, category);
       setSearchedRecipes(searchResults);
     } catch (e) {
-      global.alert(e.message);
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
     }
   }, [searchWord]);
 

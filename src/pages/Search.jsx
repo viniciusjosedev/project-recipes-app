@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
-
 import DefaultContext from '../context/DefaultContext';
 import SearchBar from '../components/SearchBar';
 import RecipeCard from '../components/RecipeCard';
