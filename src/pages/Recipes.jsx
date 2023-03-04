@@ -2,8 +2,8 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import DefaultContext from '../context/DefaultContext';
 import RecipeCard from '../components/RecipeCard';
-import fetchRecipesAndCategoresInitial,
-{ fetchCategores } from '../services/foodAndDrink';
+import fetchRecipesAndCategoresInitial, { fetchCategores }
+  from '../services/foodAndDrink';
 
 function Recipes() {
   const { searchedRecipes, searcheCategories,

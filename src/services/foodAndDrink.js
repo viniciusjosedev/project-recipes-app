@@ -41,3 +41,15 @@ export async function fetchCategores(name, path) {
   const requisicao = await (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`)).json();
   return [requisicao.drinks, false];
 }
+
+export const fetchDetails = async (category, id) => {
+  if (category === 'meals') {
+    const requisicao = await (await fetch(`${BASE_URL_FOOD}lookup.php?i=${id}`)).json();
+    return requisicao[category][0];
+  }
+
+  if (category === 'drinks') {
+    const requisicao = await (await fetch(`${BASE_URL_DRINK}lookup.php?i=${id}`)).json();
+    return requisicao[category][0];
+  }
+};
