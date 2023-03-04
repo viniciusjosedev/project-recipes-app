@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,14 +20,22 @@ function App() {
         exact
         path="/meals"
         render={ (props) => (
-          <Search { ...props } />
+          <>
+            <Header { ...props } />
+            <Search { ...props } />
+            <Footer { ...props } />
+          </>
         ) }
       />
       <Route
         exact
         path="/drinks"
         render={ (props) => (
-          <Search { ...props } />
+          <>
+            <Header { ...props } />
+            <Search { ...props } />
+            <Footer { ...props } />
+          </>
         ) }
       />
       <Route
@@ -61,7 +70,10 @@ function App() {
         exact
         path="/profile"
         render={ (props) => (
-          <Header { ...props } />
+          <>
+            <Header { ...props } />
+            <Footer { ...props } />
+          </>
         ) }
       />
       <Route

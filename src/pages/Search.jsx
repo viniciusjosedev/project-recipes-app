@@ -1,12 +1,10 @@
 import React from 'react';
 import SearchBar from '../components/SearchBar';
-import Header from '../components/Header';
 import Recipes from './Recipes';
 
-function Search(props) {
+function Search() {
   return (
     <div>
-      <Header { ...props } />
       <SearchBar />
       <Recipes />
     </div>

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import DefaultContext from '../context/DefaultContext';
 import RecipeCard from '../components/RecipeCard';
 import fetchRecipesAndCategoresInitial,
