@@ -59,7 +59,7 @@ function Recipes() {
 
   return (
     <div>
-      {searcheCategories ? renderCategories.map((e) => (
+      {searcheCategories && renderCategories.map((e) => (
         <button
           key={ e.strCategory }
           data-testid={ `${e.strCategory}-category-filter` }
@@ -67,7 +67,7 @@ function Recipes() {
         >
           {e.strCategory}
         </button>
-      )) : null}
+      ))}
       <button
         data-testid="All-category-filter"
         type="button"
