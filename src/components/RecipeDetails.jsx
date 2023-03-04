@@ -15,6 +15,7 @@ function RecipeDetails() {
 
     const init = async () => {
       const results = await fetchDetails(category, id);
+      console.log(results);
       setDetails(results);
       setIngredients(getIngredients(results));
     };
@@ -22,10 +23,21 @@ function RecipeDetails() {
   }, []);
 
   return (
-    <div data-testid="recipe-photo">
-      <img src={ details[`str${type}Thumb`] } alt="imagem da receita" />
+    <div>
+      <img
+        data-testid="recipe-photo"
+        src={ details[`str${type}Thumb`] }
+        alt="imagem da receita"
+      />
       <h2 data-testid="recipe-title">{details[`str${type}`]}</h2>
-      <h4 data-testid="recipe-category">{details.strCategory}</h4>
+      {
+        category === 'drinks'
+          ? (
+            <h4 data-testid="recipe-category">
+              {`${details.strCategory} - ${details.strAlcoholic}`}
+            </h4>
+          ) : (<h4 data-testid="recipe-category">{ details.strCategory }</h4>)
+      }
       <p>Ingredientes</p>
       <ul>
         {
@@ -34,7 +46,7 @@ function RecipeDetails() {
               key={ index }
               data-testid={ `${index}-ingredient-name-and-measure` }
             >
-              { ingredient }
+              { `${ingredient.measure} of ${ingredient.name}` }
             </li>
           ))
         }
@@ -43,11 +55,14 @@ function RecipeDetails() {
       {
         category === 'meals' && (
           <iframe
+            data-testid="video"
             width="420"
             height="315"
             title="Video da receta"
             src={ details.strYoutube }
-          />
+          >
+            Teste
+          </iframe>
         )
       }
     </div>
