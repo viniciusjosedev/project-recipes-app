@@ -1,18 +1,22 @@
 const BASE_URL_FOOD = 'https://www.themealdb.com/api/json/v1/1/';
 const BASE_URL_DRINK = 'https://www.thecocktaildb.com/api/json/v1/1/';
 
-export const fetchRecipes = async (searchType, searchWord, category) => {
-  if (searchType === '/meals') {
+export default async function fetchRecipesAndCategoresInitial(path) {
+  if (path === '/meals') {
     const requisicao = await (await fetch(`${BASE_URL_FOOD}search.php?s=`)).json();
-    console.log(requisicao);
-    return requisicao.meals;
+    const requisaoCategory = await (await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')).json();
+    return { receitas: [requisicao.meals, true],
+      category: requisaoCategory.meals };
   }
-  if (searchType === '/drinks') {
+  if (path === '/drinks') {
     const requisicao = await (await fetch(`${BASE_URL_DRINK}search.php?s=`)).json();
-    console.log(requisicao);
-    return requisicao.drinks;
+    const requisaoCategory = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')).json();
+    console.log(requisaoCategory);
+    return { receitas: [requisicao.drinks, true],
+      category: requisaoCategory.drinks };
   }
-
+}
+export const fetchRecipes = async (searchType, searchWord, category) => {
   const pathOption = searchType.option === 'ingredient' ? 'filter' : 'search';
   const categoryUrl = category === 'meals' ? BASE_URL_FOOD : BASE_URL_DRINK;
 
@@ -23,9 +27,17 @@ export const fetchRecipes = async (searchType, searchWord, category) => {
   const data = await response.json();
 
   if (data[category] === null) {
-    console.log('passou aqui');
     throw new Error('Not found');
   }
 
-  return data[category];
+  return [data[category], true];
 };
+
+export async function fetchCategores(name, path) {
+  if (path === '/meals') {
+    const requisicao = await (await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`)).json();
+    return [requisicao.meals, false];
+  }
+  const requisicao = await (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`)).json();
+  return [requisicao.drinks, false];
+}

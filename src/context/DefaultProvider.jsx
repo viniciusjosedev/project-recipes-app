@@ -4,7 +4,8 @@ import DefaultContext from './DefaultContext';
 import { fetchRecipes } from '../services/foodAndDrink';
 
 function DefaultProvider({ children }) {
-  const [searchedRecipes, setSearchedRecipes] = useState([]);
+  const [searchedRecipes, setSearchedRecipes] = useState([[]]);
+  const [searcheCategories, setSearcheCategories] = useState([]);
   const [searchWord, setSearchWord] = useState('');
 
   const executeSearch = useCallback(async (searchType, category) => {
@@ -16,18 +17,15 @@ function DefaultProvider({ children }) {
     }
   }, [searchWord]);
 
-  const init = async (path) => {
-    const searchResults = await fetchRecipes(path);
-    setSearchedRecipes(searchResults);
-  };
-
   const values = useMemo(() => ({
     searchedRecipes,
     searchWord,
     setSearchWord,
     executeSearch,
-    init,
-  }), [searchedRecipes, searchWord, setSearchWord, executeSearch]);
+    setSearchedRecipes,
+    setSearcheCategories,
+    searcheCategories,
+  }), [searchedRecipes, searchWord, setSearchWord, executeSearch, searcheCategories]);
 
   return (
     <DefaultContext.Provider value={ values }>
