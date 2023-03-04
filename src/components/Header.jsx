@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import funcNameHeader from '../helpers/nameHeader';
+import DefaultContext from '../context/DefaultContext';
+import style from '../styles/css/Header.module.css';
 
 function Header({ history: { location: { pathname } } }) {
   const [nameHeader, setNameHeader] = useState(['']);
   const [inputSearch, setInputSearch] = useState(false);
+  const { setSearchWord } = useContext(DefaultContext);
 
   useEffect(() => {
     function init() {
@@ -18,7 +21,7 @@ function Header({ history: { location: { pathname } } }) {
   }, [pathname]);
 
   return (
-    <header>
+    <header className={ style.header } id={ style.teste }>
       <h1 data-testid="page-title">{nameHeader[0]}</h1>
       <Link to="/profile">
         {' '}
@@ -32,7 +35,11 @@ function Header({ history: { location: { pathname } } }) {
         </button>
       ) }
       { inputSearch && (
-        <input type="text" data-testid="search-input" />
+        <input
+          type="text"
+          data-testid="search-input"
+          onChange={ ({ target: { value } }) => setSearchWord(value) }
+        />
       ) }
     </header>
   );

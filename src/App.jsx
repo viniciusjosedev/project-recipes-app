@@ -1,9 +1,11 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
-// import DefaultProvider from './context/DefaultProvider';
+import Search from './pages/Search';
 import Header from './components/Header';
+import RecipeDetails from './components/RecipeDetails';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,41 +21,46 @@ function App() {
         exact
         path="/meals"
         render={ (props) => (
-          <Header { ...props } />
-
+          <>
+            <Header { ...props } />
+            <Search { ...props } />
+            <Footer { ...props } />
+          </>
         ) }
       />
       <Route
         exact
         path="/drinks"
         render={ (props) => (
-          <Header { ...props } />
+          <>
+            <Header { ...props } />
+            <Search { ...props } />
+            <Footer { ...props } />
+          </>
+        ) }
+      />
+      <Route
+        path="/meals/:id"
+        render={ (props) => (
+          <RecipeDetails { ...props } />
+        ) }
+      />
+      <Route
+        path="/drinks/:id"
+        render={ (props) => (
+          <RecipeDetails { ...props } />
         ) }
       />
       <Route
         exact
-        path="/meals/:id-da-receita"
+        path="/meals/:id/in-progress"
         render={ (props) => (
           <Login { ...props } />
         ) }
       />
       <Route
         exact
-        path="/drinks/:id-da-receita"
-        render={ (props) => (
-          <Login { ...props } />
-        ) }
-      />
-      <Route
-        exact
-        path="/meals/:id-da-receita/in-progress"
-        render={ (props) => (
-          <Login { ...props } />
-        ) }
-      />
-      <Route
-        exact
-        path="/drinks/:id-da-receita/in-progress"
+        path="/drinks/:id/in-progress"
         render={ (props) => (
           <Login { ...props } />
         ) }
@@ -62,7 +69,10 @@ function App() {
         exact
         path="/profile"
         render={ (props) => (
-          <Header { ...props } />
+          <>
+            <Header { ...props } />
+            <Footer { ...props } />
+          </>
         ) }
       />
       <Route
