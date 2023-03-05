@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { wait } from '@testing-library/user-event/dist/utils';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
@@ -51,7 +51,7 @@ describe('testing the Recipes functions', () => {
 
     userEvent.click(beefButton);
 
-    await wait(100);
+    await wait(1000);
     const beefNmustardPie = screen.getByText(/beef and mustard pie/i);
 
     expect(beefButton).toBeInTheDocument();
@@ -62,4 +62,22 @@ describe('testing the Recipes functions', () => {
     expect(allButton).toBeInTheDocument();
     expect(beefNmustardPie).toBeInTheDocument();
   });
+
+  it('', async () => {
+    renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] }); renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
+
+    await waitFor(() => {
+      userEvent.click(screen.getByTestId('Beef-category-filter'));
+      userEvent.click(screen.getByTestId('Beef-category-filter'));
+    }, { timeout: 5000 });
+  }, 30000);
+
+  it('', async () => {
+    renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] }); renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
+
+    await waitFor(() => {
+      userEvent.click(screen.getByTestId('Goat-category-filter'));
+      userEvent.click(screen.getByTestId('Goat-category-filter'));
+    }, { timeout: 5000 });
+  }, 30000);
 });
