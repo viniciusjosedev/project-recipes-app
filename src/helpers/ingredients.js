@@ -1,5 +1,6 @@
 const getNames = (recipe) => {
   const recipeArr = Object.entries(recipe);
+  // console.log(recipeArr);
   const ingredientNames = recipeArr.filter((line) => {
     const nullEmpty = line[1] === null || line[1] === '';
     return line[0].includes('Ingredient') && (!nullEmpty);
@@ -21,7 +22,7 @@ const getMeasures = (recipe) => {
 export const getIngredients = (recipe) => {
   const ingredientNames = getNames(recipe);
   const ingredientMeasures = getMeasures(recipe);
-  console.log(ingredientMeasures);
+  // console.log(ingredientNames, ingredientMeasures);
   const ingredientList = ingredientNames.map((ingredient, index) => ({
     name: ingredient,
     measure: ingredientMeasures[index],

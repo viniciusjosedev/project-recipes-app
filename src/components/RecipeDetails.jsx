@@ -12,12 +12,13 @@ function RecipeDetails() {
 
   useEffect(() => {
     const id = pathname.split('/')[2];
-
+    // console.log(pathname.split('/'));
     const init = async () => {
       const results = await fetchDetails(category, id);
-      console.log(results);
+      // console.log(results);
       setDetails(results);
       setIngredients(getIngredients(results));
+      // console.log(results.strYoutube.split('='));
     };
     init();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,13 +58,15 @@ function RecipeDetails() {
         category === 'meals' && (
           <iframe
             data-testid="video"
-            width="420"
+            width="560"
             height="315"
-            title="Video da receta"
-            src={ details.strYoutube }
-          >
-            Teste
-          </iframe>
+            src={ Object.keys(details).length > 0
+              && `https://www.youtube.com/embed/${details.strYoutube.split('=')[1]}` }
+            title="YouTube video player"
+            allow="accelerometer; autoplay;
+              clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          />
         )
       }
     </div>
