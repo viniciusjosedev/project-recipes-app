@@ -29,8 +29,9 @@ function Recipes() {
       const id = searchedRecipes[0][0][`id${category}`];
       history.push(`/${type}/${id}`);
     } else {
-      setRenderRecipes(searchedRecipes[0].slice(0, searchedRecipes.length
-        > RECIPES_TO_RENDER ? RECIPES_TO_RENDER : searchedRecipes[0].length));
+      setRenderRecipes(searchedRecipes[0]);
+      // console.log(searchedRecipes[0].length
+      //   > RECIPES_TO_RENDER ? RECIPES_TO_RENDER : searchedRecipes[0].length);
     }
   }, [history, pathname, searcheCategories, searchedRecipes]);
 
@@ -51,10 +52,12 @@ function Recipes() {
 
   const handleClick = async (name) => {
     if (buttonClick === name) {
+      setButtonClick('');
       fetchInitialRecipes();
+    } else {
+      setButtonClick(name);
+      setSearchedRecipes(await fetchCategores(name, pathname));
     }
-    setSearchedRecipes(await fetchCategores(name, pathname));
-    setButtonClick(name);
   };
 
   return (

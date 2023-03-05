@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { wait } from '@testing-library/user-event/dist/utils';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
@@ -24,4 +24,60 @@ describe('testing the Recipes functions', () => {
 
     expect(atualUrl).toBe('/meals/52977');
   });
+
+  it('Testa os botões do componente Recipes', async () => {
+    renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
+    await wait(1500);
+    const beefButton = screen.getByRole('button', {
+      name: /beef/i,
+    });
+
+    const breakfastButton = screen.getByRole('button', {
+      name: /breakfast/i,
+    });
+
+    const chickenButton = screen.getByRole('button', {
+      name: /chicken/i,
+    });
+
+    const dessertButton = screen.getByRole('button', {
+      name: /dessert/i,
+    });
+
+    const goatButton = screen.getByRole('button', {
+      name: /goat/i,
+    });
+    const allButton = screen.getByTestId('All-category-filter');
+
+    userEvent.click(beefButton);
+
+    await wait(1000);
+    const beefNmustardPie = screen.getByText(/beef and mustard pie/i);
+
+    expect(beefButton).toBeInTheDocument();
+    expect(breakfastButton).toBeInTheDocument();
+    expect(chickenButton).toBeInTheDocument();
+    expect(dessertButton).toBeInTheDocument();
+    expect(goatButton).toBeInTheDocument();
+    expect(allButton).toBeInTheDocument();
+    expect(beefNmustardPie).toBeInTheDocument();
+  });
+
+  it('', async () => {
+    renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] }); renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
+
+    await waitFor(() => {
+      userEvent.click(screen.getByTestId('Beef-category-filter'));
+      userEvent.click(screen.getByTestId('Beef-category-filter'));
+    }, { timeout: 5000 });
+  }, 30000);
+
+  it('', async () => {
+    renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] }); renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
+
+    await waitFor(() => {
+      userEvent.click(screen.getByTestId('Goat-category-filter'));
+      userEvent.click(screen.getByTestId('Goat-category-filter'));
+    }, { timeout: 5000 });
+  }, 30000);
 });
