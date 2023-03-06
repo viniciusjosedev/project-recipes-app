@@ -30,3 +30,13 @@ export const getIngredients = (recipe) => {
 
   return ingredientList;
 };
+
+export const getRecomendations = async (path) => {
+  if (path === 'meals') {
+    const requisicao = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')).json();
+    // console.log(requisicao.drinks);
+    return requisicao.drinks;
+  } const requisicao = await (await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')).json();
+  // console.log(requisicao.meals);
+  return requisicao.meals;
+};

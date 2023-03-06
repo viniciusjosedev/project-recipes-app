@@ -1,75 +1,131 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { fetchDetails } from '../services/foodAndDrink';
-import { getIngredients } from '../helpers/ingredients';
+import { getIngredients, getRecomendations } from '../helpers/ingredients';
+import style from '../styles/css/RecipeDetails.module.css';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
   const [details, setDetails] = useState({});
   const [ingredients, setIngredients] = useState([]);
+  const [recomendations, setRecomendations] = useState([]);
+  const [disabledButton, setDisabledButton] = useState(true);
+  const [optionButton, setOptionButton] = useState();
+  const history = useHistory();
   const category = pathname.split('/')[1];
   const type = category === 'meals' ? 'Meal' : 'Drink';
+  const typeInverse = category === 'meals' ? 'Drink' : 'Meal';
+  const id = pathname.split('/')[2];
+
+  const funcOptionsButton = () => {
+    if (JSON.parse(localStorage.getItem('doneRecipes')) !== null
+      && JSON.parse(localStorage.getItem('doneRecipes'))
+        .filter((e) => e.id === id).length > 0) {
+      setDisabledButton(false);
+    } else if (JSON.parse(localStorage.getItem('inProgressRecipes')) !== null
+        && Object.keys(JSON.parse(localStorage.getItem('inProgressRecipes'))[category])
+          .filter((e) => e === id).length > 0) {
+      setOptionButton('continue');
+      setDisabledButton(true);
+    } else {
+      setDisabledButton(true);
+      setOptionButton('start');
+    }
+  };
 
   useEffect(() => {
-    const id = pathname.split('/')[2];
-    // console.log(pathname.split('/'));
+    const NUMBER_MAX_RECOMENDATIONS = 6;
     const init = async () => {
       const results = await fetchDetails(category, id);
-      // console.log(results);
       setDetails(results);
       setIngredients(getIngredients(results));
-      // console.log(results.strYoutube.split('='));
+      setRecomendations((await getRecomendations(pathname.split('/')[1]))
+        .slice(0, NUMBER_MAX_RECOMENDATIONS));
+      funcOptionsButton();
     };
     init();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div>
-      <img
-        data-testid="recipe-photo"
-        src={ details[`str${type}Thumb`] }
-        alt="imagem da receita"
-      />
-      <h2 data-testid="recipe-title">{details[`str${type}`]}</h2>
-      {
-        category === 'drinks'
-          ? (
-            <h4 data-testid="recipe-category">
-              {`${details.strCategory} - ${details.strAlcoholic}`}
-            </h4>
-          ) : (<h4 data-testid="recipe-category">{ details.strCategory }</h4>)
-      }
-      <p>Ingredientes</p>
-      <ul>
+    <>
+      <main className={ style.main }>
+        <img
+          data-testid="recipe-photo"
+          src={ details[`str${type}Thumb`] }
+          alt="imagem da receita"
+        />
+        <h2 data-testid="recipe-title">{details[`str${type}`]}</h2>
         {
-          ingredients.map((ingredient, index) => (
-            <li
-              key={ index }
-              data-testid={ `${index}-ingredient-name-and-measure` }
-            >
-              { `${ingredient.measure} of ${ingredient.name}` }
-            </li>
-          ))
+          category === 'drinks'
+            ? (
+              <h4 data-testid="recipe-category">
+                {`${details.strCategory} - ${details.strAlcoholic}`}
+              </h4>
+            ) : (<h4 data-testid="recipe-category">{ details.strCategory }</h4>)
         }
-      </ul>
-      <p data-testid="instructions">{details.strInstructions}</p>
-      {
-        category === 'meals' && (
-          <iframe
-            data-testid="video"
-            width="560"
-            height="315"
-            src={ Object.keys(details).length > 0
-              && `https://www.youtube.com/embed/${details.strYoutube.split('=')[1]}` }
-            title="YouTube video player"
-            allow="accelerometer; autoplay;
+        <p>Ingredientes</p>
+        <ul>
+          {
+            ingredients.map((ingredient, index) => (
+              <li
+                key={ index }
+                data-testid={ `${index}-ingredient-name-and-measure` }
+              >
+                { `${ingredient.measure} of ${ingredient.name}` }
+              </li>
+            ))
+          }
+        </ul>
+        <p data-testid="instructions">{details.strInstructions}</p>
+        {
+          category === 'meals' && (
+            <iframe
+              data-testid="video"
+              width="560"
+              height="315"
+              src={ Object.keys(details).length > 0
+                && `https://www.youtube.com/embed/${details.strYoutube.split('=')[1]}` }
+              title="YouTube video player"
+              allow="accelerometer; autoplay;
               clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          />
-        )
-      }
-    </div>
+              allowfullscreen
+            />
+          )
+        }
+        <div
+          className={ style.divRecomendationCard }
+        >
+          {recomendations.length > 0 && recomendations.map((e, index) => (
+            <div
+              key={ e[`str${typeInverse}`] }
+              data-testid={ `${index}-recommendation-card` }
+            >
+              <img
+                src={ `${e[`str${typeInverse}Thumb`]}` }
+                alt=""
+              />
+              <h4
+                data-testid={ `${index}-recommendation-title` }
+              >
+                {`${e[`str${typeInverse}`]}`}
+              </h4>
+            </div>
+          ))}
+        </div>
+        {disabledButton && (
+          <button
+            data-testid="start-recipe-btn"
+            type="button"
+            className={ style.buttonStartRecipe }
+            onClick={ () => history.push(`${pathname}/in-progress`) }
+          >
+            {optionButton === 'start' ? 'Start Recipes' : 'Continue Recipes'}
+          </button>
+        )}
+      </main>
+      <footer className={ style.footer } />
+    </>
   );
 }
 
