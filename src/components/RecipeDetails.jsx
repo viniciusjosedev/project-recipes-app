@@ -36,12 +36,12 @@ function RecipeDetails() {
   useEffect(() => {
     const NUMBER_MAX_RECOMENDATIONS = 6;
     const init = async () => {
+      funcOptionsButton();
       const results = await fetchDetails(category, id);
       setDetails(results);
       setIngredients(getIngredients(results));
       setRecomendations((await getRecomendations(pathname.split('/')[1]))
         .slice(0, NUMBER_MAX_RECOMENDATIONS));
-      funcOptionsButton();
     };
     init();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -113,6 +113,8 @@ function RecipeDetails() {
             </div>
           ))}
         </div>
+        <button type="button" data-testid="share-btn">Compartilhar</button>
+        <button type="button" data-testid="favorite-btn">Favoritar</button>
         {disabledButton && (
           <button
             data-testid="start-recipe-btn"
