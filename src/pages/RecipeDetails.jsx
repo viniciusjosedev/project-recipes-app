@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import clipboardCopy from 'clipboard-copy';
 import { fetchDetails } from '../services/foodAndDrink';
 import { getIngredients, getRecomendations } from '../helpers/ingredients';
 import style from '../styles/css/RecipeDetails.module.css';
@@ -11,6 +12,7 @@ function RecipeDetails() {
   const [recomendations, setRecomendations] = useState([]);
   const [disabledButton, setDisabledButton] = useState(true);
   const [optionButton, setOptionButton] = useState();
+  const [textCopied, setTextCopied] = useState(false);
   const history = useHistory();
   const category = pathname.split('/')[1];
   const type = category === 'meals' ? 'Meal' : 'Drink';
@@ -113,8 +115,27 @@ function RecipeDetails() {
             </div>
           ))}
         </div>
-        <button type="button" data-testid="share-btn">Compartilhar</button>
-        <button type="button" data-testid="favorite-btn">Favoritar</button>
+        <button
+          type="button"
+          onClick={ () => {
+            clipboardCopy(window.location.href);
+            setTextCopied(true);
+          } }
+          data-testid="share-btn"
+        >
+          Compartilhar
+        </button>
+        <button
+          type="button"
+          data-testid="favorite-btn"
+        >
+          Favoritar
+        </button>
+        { textCopied && (
+          <p>
+            Link copied!
+          </p>
+        ) }
         {disabledButton && (
           <button
             data-testid="start-recipe-btn"
