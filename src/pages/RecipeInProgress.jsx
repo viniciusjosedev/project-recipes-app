@@ -3,9 +3,13 @@ import { useLocation } from 'react-router-dom';
 import clipboardCopy from 'clipboard-copy';
 import DefaultContext from '../context/DefaultContext';
 import { getIngredients } from '../helpers/ingredients';
-import { removeFavoriteRecipes, addFavoriteRecipes } from '../helpers/setLocalStorage';
+import { removeFavoriteRecipes,
+  addFavoriteRecipes,
+  addProgressInRecipes, removeProgressInRecipes } from '../helpers/setLocalStorage';
 import whiteHeartIcon from '../styles/images/whiteHeartIcon.svg';
 import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
+import { fetchDetails } from '../services/foodAndDrink';
+import styles from '../styles/css/RecipeInProgress.module.css';
 
 function RecipeInProgress() {
   const [ingredients, setIngredients] = useState([]);
@@ -14,7 +18,8 @@ function RecipeInProgress() {
   const id = pathname.split('/')[2];
   const category = pathname.split('/')[1];
   const type = category === 'meals' ? 'Meal' : 'Drink';
-  const { details } = useContext(DefaultContext);
+  const { details, setDetails } = useContext(DefaultContext);
+  const [arrayChecked, setArrayChecked] = useState([]);
 
   const handleIcon = () => {
     setFavoriteRecipe(JSON.parse(localStorage.getItem('favoriteRecipes'))
@@ -23,8 +28,21 @@ function RecipeInProgress() {
   };
 
   useEffect(() => {
-    function init() {
-      setIngredients(getIngredients(details));
+    async function init() {
+      if (details.length > 0 && details.some((e) => e[`id${type}`] === id)) {
+        setIngredients(getIngredients(details));
+        handleIcon();
+      } else {
+        const results = await fetchDetails(category, id);
+        setDetails(results);
+        setIngredients(getIngredients(results));
+      }
+      const getStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      if (getStorage !== null
+        && Object.keys(getStorage[category]).some((e) => e === id)) {
+        // console.log(getStorage[category][id]);
+        setArrayChecked(getStorage[category][id]);
+      }
       handleIcon();
     }
     init();
@@ -51,12 +69,29 @@ function RecipeInProgress() {
       <ul>
         {
           ingredients.map((ingredient, index) => (
-            <li
+            <label
               key={ index }
-              data-testid={ `${index}-ingredient-name-and-measure` }
+              className={ arrayChecked.includes(ingredient.name)
+                ? styles.checked : null }
+              data-testid={ `${index}-ingredient-step` }
             >
               { `${ingredient.measure} of ${ingredient.name}` }
-            </li>
+              <input
+                type="checkbox"
+                checked={ arrayChecked.includes(ingredient.name) }
+                onClick={ ({ target: { checked } }) => {
+                  // console.log(checked);
+                  if (checked) {
+                    setArrayChecked([...arrayChecked, ingredient.name]);
+                    addProgressInRecipes(ingredient.name, category, id);
+                  } else {
+                    console.log('teste');
+                    setArrayChecked(arrayChecked.filter((e) => e !== ingredient.name));
+                    removeProgressInRecipes(ingredient.name, category, id);
+                  }
+                } }
+              />
+            </label>
           ))
         }
       </ul>

@@ -27,3 +27,33 @@ export const removeFavoriteRecipes = (id) => {
     .parse(localStorage.getItem('favoriteRecipes'))
     .filter((e) => e.id !== id)));
 };
+
+export const addProgressInRecipes = (ingredientes, category, id) => {
+  console.log(ingredientes, category, id);
+  if (JSON.parse(localStorage.getItem('inProgressRecipes')) !== null) {
+    localStorage.setItem(
+      'inProgressRecipes',
+      JSON.stringify({ ...JSON.parse(localStorage.getItem('inProgressRecipes')),
+        [category]: { ...JSON.parse(localStorage.getItem('inProgressRecipes'))[category],
+          [id]: [...JSON.parse(localStorage
+            .getItem('inProgressRecipes'))[category][id], ingredientes] } }),
+    );
+  } else {
+    localStorage.setItem(
+      'inProgressRecipes',
+      JSON.stringify({ meals: {}, drinks: {}, [category]: { [id]: [ingredientes] } }),
+    );
+  }
+};
+
+export const removeProgressInRecipes = (ingredientes, category, id) => {
+  console.log(ingredientes);
+  localStorage.setItem(
+    'inProgressRecipes',
+    JSON.stringify({ ...JSON.parse(localStorage.getItem('inProgressRecipes')),
+      [category]: { ...JSON.parse(localStorage.getItem('inProgressRecipes'))[category],
+        [id]: JSON.parse(localStorage
+          .getItem('inProgressRecipes'))[category][id]
+          .filter((e) => e !== ingredientes) } }),
+  );
+};
