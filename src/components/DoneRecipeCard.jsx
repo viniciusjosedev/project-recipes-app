@@ -4,26 +4,34 @@ import { Link } from 'react-router-dom';
 function DoneRecipeCard(props) {
   const { index, image, category, name, doneDate, tags, id, type } = props;
 
+  const pathBase = window.location.href.replace('/done-recipes', '');
+  const detailsPath = `/${type}s/${id}`;
+  const detailsCompletePath = `${pathBase}/${type}s/${id}`;
+
   return (
     <div>
       <button
         type="button"
+        value={ detailsCompletePath }
         data-testid={ `${index}-horizontal-share-btn` }
+        onClick={ ({ target: { value } }) => (
+          navigator.clipboard.writeText(value)
+        ) }
       >
         Share
       </button>
-      <Link to={ `/${type}s/${id}` }>
+      <Link to={ detailsPath }>
         <img
           src={ image }
           alt="foto da receita"
           data-testid={ `${index}-horizontal-image` }
         />
       </Link>
-      <h3 data-testid={ `${index}-horizontal-top-text>` }>{ category }</h3>
-      <Link to={ `/${type}s/${id}` }>
-        <h2 data-testid={ `${index}-horizontal-top-text>` }>{ name }</h2>
+      <h3 data-testid={ `${index}-horizontal-top-text` }>{ category }</h3>
+      <Link to={ detailsPath }>
+        <h2 data-testid={ `${index}-horizontal-top-text` }>{ name }</h2>
       </Link>
-      <p data-testid={ `${index}-horizontal-done-date>` }>{ doneDate }</p>
+      <p data-testid={ `${index}-horizontal-done-date` }>{ doneDate }</p>
       <ul>
         {
           tags.map((tag) => (
