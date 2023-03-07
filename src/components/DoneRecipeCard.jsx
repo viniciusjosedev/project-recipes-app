@@ -1,37 +1,66 @@
 import PropTypes from 'prop-types';
 
 function DoneRecipeCard(props) {
-  const { index, image, category, name, doneDate, tags } = props;
+  const { index, image, category, name, doneDate, tags, type,
+    nationality, alcoholicOrNot } = props;
+
+  const primeirosDois = tags.slice(0, 2);
+  console.log(primeirosDois);
 
   return (
+
     <div>
-      <button
-        type="button"
-        data-testid={ `${index}-horizontal-share-btn` }
-      >
-        Share
-      </button>
+      <h1>{type}</h1>
       <img
         src={ image }
         alt="foto da receita"
         data-testid={ `${index}-horizontal-image` }
       />
-      <h3 data-testid={ `${index}-horizontal-top-text>` }>{ category }</h3>
-      <h2 data-testid={ `${index}-horizontal-top-text>` }>{ name }</h2>
-      <p data-testid={ `${index}-horizontal-done-date>` }>{ doneDate }</p>
+      <br />
+      <h2 data-testid={ `${index}-horizontal-top-name` }>{name}</h2>
+      <br />
+      {
+        type === 'meal'
+        && <h3 data-testid={ `${index}-horizontal-top-text` }>
+          {nationality}
+          {' '}
+          -
+          {' '}
+          {category}
+           </h3>
+
+      }
+      {
+        type === 'drink'
+        && <h3 data-testid={ `${index}-horizontal-top-text` }>
+          {alcoholicOrNot}
+           </h3>
+      }
+
+      <p data-testid={ `${index}-horizontal-done-date>` }>{doneDate}</p>
+      <br />
+      <button
+        type="button"
+        data-testid={ `${index}-horizontal-share-btn` }
+      >
+        <img
+          src="images/shareIcon.svg"
+          alt="share icon"
+        />
+      </button>
       <ul>
-        {
-          tags.map((tag) => (
-            <li
-              data-testid={ `${index}-${tag}-horizontal-tag` }
-              key={ `${index}${tag}` }
-            >
-              { tag }
-            </li>
-          ))
-        }
+        {tags.slice(0, 2).map((tag) => (
+          <li
+            data-testid={ `${index}-${tag}-horizontal-tag` }
+            key={ `${index}${tag}` }
+          >
+            {tag}
+          </li>
+        ))}
       </ul>
+
     </div>
+
   );
 }
 
@@ -41,6 +70,9 @@ DoneRecipeCard.propTypes = {
   category: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   doneDate: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  nationality: PropTypes.string.isRequired,
+  alcoholicOrNot: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 

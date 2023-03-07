@@ -15,11 +15,11 @@ const MOCK_DONE_RCPS = [{
   tags: ['muito boa', 'dias frios'],
 }, {
   id: '52978',
-  type: 'meal',
+  type: 'drink',
   nationality: 'brazilian',
   category: 'Categoria',
   alcoholicOrNot: 'Non Alcoholic',
-  name: 'Sopa',
+  name: 'Chá Gelado',
   image: 'Link da imagem',
   doneDate: '2022/01/01',
   tags: ['difícil', 'para fazer com amigos', 'dias quentes'],
