@@ -1,24 +1,34 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function DoneRecipeCard(props) {
-  const { index, image, category, name, doneDate, tags, type,
+  const { index, image, category, name, doneDate, tags, type, id,
     nationality, alcoholicOrNot } = props;
 
-  const primeirosDois = tags.slice(0, 2);
-  console.log(primeirosDois);
+  const pathBase = window.location.href.replace('/done-recipes', '');
+  const detailsPath = `/${type}s/${id}`;
+  const detailsCompletePath = `${pathBase}/${type}s/${id}`;
 
   return (
 
     <div>
-      <h1>{type}</h1>
-      <img
-        src={ image }
-        alt="foto da receita"
-        data-testid={ `${index}-horizontal-image` }
-      />
-      <br />
-      <h2 data-testid={ `${index}-horizontal-top-name` }>{name}</h2>
-      <br />
+      <button
+        type="button"
+        value={ detailsCompletePath }
+        data-testid={ `${index}-horizontal-share-btn` }
+        onClick={ ({ target: { value } }) => (
+          navigator.clipboard.writeText(value)
+        ) }
+      >
+        Share
+      </button>
+      <Link to={ detailsPath }>
+        <img
+          src={ image }
+          alt="foto da receita"
+          data-testid={ `${index}-horizontal-image` }
+        />
+      </Link>
       {
         type === 'meal'
         && (
@@ -38,18 +48,11 @@ function DoneRecipeCard(props) {
             {alcoholicOrNot}
           </h3>)
       }
-
-      <p data-testid={ `${index}-horizontal-done-date>` }>{doneDate}</p>
-      <br />
-      <button
-        type="button"
-        data-testid={ `${index}-horizontal-share-btn` }
-      >
-        <img
-          src="images/shareIcon.svg"
-          alt="share icon"
-        />
-      </button>
+      <h3 data-testid={ `${index}-horizontal-top-text` }>{ category }</h3>
+      <Link to={ detailsPath }>
+        <h2 data-testid={ `${index}-horizontal-top-text` }>{ name }</h2>
+      </Link>
+      <p data-testid={ `${index}-horizontal-done-date` }>{ doneDate }</p>
       <ul>
         {tags.slice(0, 2).map((tag) => (
           <li
@@ -76,6 +79,7 @@ DoneRecipeCard.propTypes = {
   nationality: PropTypes.string.isRequired,
   alcoholicOrNot: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default DoneRecipeCard;
