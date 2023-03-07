@@ -7,6 +7,7 @@ import Header from './components/Header';
 import RecipeDetails from './pages/RecipeDetails';
 import Footer from './components/Footer';
 import DoneRecipes from './pages/DoneRecipes';
+import FavoriteRecipes from './pages/FavoriteRecipes';
 
 function App() {
   return (
@@ -90,7 +91,10 @@ function App() {
         exact
         path="/favorite-recipes"
         render={ (props) => (
-          <Header { ...props } />
+          <>
+            <Header { ...props } />
+            <FavoriteRecipes />
+          </>
         ) }
       />
     </Switch>
