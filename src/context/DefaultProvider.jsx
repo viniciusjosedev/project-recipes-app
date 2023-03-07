@@ -6,6 +6,7 @@ import { fetchRecipes } from '../services/foodAndDrink';
 function DefaultProvider({ children }) {
   const [searchedRecipes, setSearchedRecipes] = useState([[]]);
   const [searcheCategories, setSearcheCategories] = useState([]);
+  const [details, setDetails] = useState({});
   const [searchWord, setSearchWord] = useState('');
 
   const executeSearch = useCallback(async (searchType, category) => {
@@ -25,7 +26,10 @@ function DefaultProvider({ children }) {
     setSearchedRecipes,
     setSearcheCategories,
     searcheCategories,
-  }), [searchedRecipes, searchWord, setSearchWord, executeSearch, searcheCategories]);
+    details,
+    setDetails,
+  }), [searchedRecipes, searchWord,
+    setSearchWord, executeSearch, searcheCategories, details]);
 
   return (
     <DefaultContext.Provider value={ values }>
