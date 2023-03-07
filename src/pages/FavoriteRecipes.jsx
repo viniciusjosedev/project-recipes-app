@@ -33,7 +33,7 @@ function FavoriteRecipes() {
       setRenderRecipes(favoriteRecipes);
       return;
     }
-    const filteredRecipes = MOCK_FAVORITE_RCPS
+    const filteredRecipes = favoriteRecipes
       .filter((recipe) => recipe.type === filterType);
     setRenderRecipes(filteredRecipes);
   };
