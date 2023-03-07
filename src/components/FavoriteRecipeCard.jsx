@@ -49,12 +49,13 @@ function FavoriteRecipeCard(props) {
       }
       <h3 data-testid={ `${index}-horizontal-top-text` }>{ category }</h3>
       <Link to={ detailsPath }>
-        <h2 data-testid={ `${index}-horizontal-top-text` }>{ name }</h2>
+        <h2 data-testid={ `${index}-horizontal-name` }>{ name }</h2>
       </Link>
       <button
         type="button"
         value={ id }
         onClick={ ({ target: { value } }) => removeFromFavorite(value) }
+        data-testid={ `${index}-horizontal-favorite-btn` }
       >
         Desfavoritar
       </button>

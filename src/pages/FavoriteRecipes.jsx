@@ -1,32 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
-
-const MOCK_FAVORITE_RCPS = [{
-  id: '52977',
-  type: 'drink',
-  nationality: 'brazilian',
-  category: 'Categoria',
-  alcoholicOrNot: 'Non Alcoholic',
-  name: 'Caipirinha',
-  image: 'Link da imagem',
-}, {
-  id: '52978',
-  type: 'meal',
-  nationality: 'brazilian',
-  category: 'Categoria',
-  alcoholicOrNot: 'Non Alcoholic',
-  name: 'Sopa',
-  image: 'Link da imagem',
-}];
+import { removeFavoriteRecipes } from '../helpers/setLocalStorage';
 
 function FavoriteRecipes() {
-  // Essa linha será retirada quando tivermos a chave FavoriteRecipes no LocalStorage
-  const [favoriteRecipes, setFavoriteRecipes] = useState(MOCK_FAVORITE_RCPS);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [renderRecipes, setRenderRecipes] = useState(favoriteRecipes);
 
-  // useEffect(() => {
-  //   setRenderRecipes(favoriteRecipes);
-  // }, [favoriteRecipes]);
+  useEffect(() => {
+    const localStorageFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    setFavoriteRecipes(localStorageFavorites);
+    setRenderRecipes(localStorageFavorites);
+  }, []);
 
   const handleFilter = (filterType) => {
     if (filterType === 'all') {
@@ -47,6 +31,7 @@ function FavoriteRecipes() {
     // colocar aqui a edicão do locaStorage
     setFavoriteRecipes(newFavoriteArray);
     setRenderRecipes(newFavoriteFiltered);
+    removeFavoriteRecipes(recipeId);
   };
 
   return (

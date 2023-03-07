@@ -4,7 +4,7 @@ export const addFavoriteRecipes = (type, details) => {
     localStorage.setItem('favoriteRecipes', JSON.stringify([...JSON
       .parse(localStorage.getItem('favoriteRecipes')),
     { id: details[`id${type}`],
-      type,
+      type: type.toLowerCase(),
       nationality: details.strArea ? details.strArea : '',
       category: details.strCategory,
       alcoholicOrNot: details.strAlcoholic ? details.strAlcoholic : null,
