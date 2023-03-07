@@ -4,6 +4,7 @@ import clipboardCopy from 'clipboard-copy';
 import { fetchDetails } from '../services/foodAndDrink';
 import { getIngredients, getRecomendations } from '../helpers/ingredients';
 import style from '../styles/css/RecipeDetails.module.css';
+import { addFavoriteRecipes } from '../helpers/setLocalStorage';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
@@ -128,6 +129,7 @@ function RecipeDetails() {
         <button
           type="button"
           data-testid="favorite-btn"
+          onClick={ (() => addFavoriteRecipes(type, details)) }
         >
           Favoritar
         </button>
