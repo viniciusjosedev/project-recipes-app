@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import copy from 'clipboard-copy';
+import shareIcon from '../images/shareIcon.svg';
 
 function FavoriteRecipeCard(props) {
   const { index, image, category, name, id,
@@ -14,12 +16,16 @@ function FavoriteRecipeCard(props) {
       <button
         type="button"
         value={ detailsCompletePath }
-        data-testid={ `${index}-horizontal-share-btn` }
+        // data-testid={ `${index}-horizontal-share-btn` }
         onClick={ ({ target: { value } }) => (
-          navigator.clipboard.writeText(value)
+          copy(value)
         ) }
       >
-        Share
+        <img
+          src={ shareIcon }
+          alt="compartilhar"
+          data-testid={ `${index}-horizontal-share-btn` }
+        />
       </button>
       <Link to={ detailsPath }>
         <img

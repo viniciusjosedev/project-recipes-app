@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import copy from 'clipboard-copy';
 
 function DoneRecipeCard(props) {
   const { index, image, category, name, doneDate, tags, type, id,
@@ -17,7 +18,7 @@ function DoneRecipeCard(props) {
         value={ detailsCompletePath }
         data-testid={ `${index}-horizontal-share-btn` }
         onClick={ ({ target: { value } }) => (
-          navigator.clipboard.writeText(value)
+          copy(value)
         ) }
       >
         Share
@@ -25,8 +26,8 @@ function DoneRecipeCard(props) {
       <Link to={ detailsPath }>
         <img
           src={ image }
-          alt="foto da receita"
           data-testid={ `${index}-horizontal-image` }
+          alt="foto da receita"
         />
       </Link>
       {
