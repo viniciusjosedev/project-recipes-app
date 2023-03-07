@@ -5,8 +5,8 @@ import { fetchDetails } from '../services/foodAndDrink';
 import { getIngredients, getRecomendations } from '../helpers/ingredients';
 import style from '../styles/css/RecipeDetails.module.css';
 import { addFavoriteRecipes, removeFavoriteRecipes } from '../helpers/setLocalStorage';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHeartIcon from '../styles/images/whiteHeartIcon.svg';
+import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
