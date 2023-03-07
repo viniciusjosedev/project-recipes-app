@@ -21,20 +21,22 @@ function DoneRecipeCard(props) {
       <br />
       {
         type === 'meal'
-        && <h3 data-testid={ `${index}-horizontal-top-text` }>
-          {nationality}
-          {' '}
-          -
-          {' '}
-          {category}
-           </h3>
+        && (
+          <h3 data-testid={ `${index}-horizontal-top-text` }>
+            {nationality}
+            {' '}
+            -
+            {' '}
+            {category}
+          </h3>)
 
       }
       {
         type === 'drink'
-        && <h3 data-testid={ `${index}-horizontal-top-text` }>
-          {alcoholicOrNot}
-           </h3>
+        && (
+          <h3 data-testid={ `${index}-horizontal-top-text` }>
+            {alcoholicOrNot}
+          </h3>)
       }
 
       <p data-testid={ `${index}-horizontal-done-date>` }>{doneDate}</p>
