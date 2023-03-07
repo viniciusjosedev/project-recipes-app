@@ -1,4 +1,4 @@
-export function addFavoriteRecipes(type, details) {
+export const addFavoriteRecipes = (type, details) => {
   if (JSON
     .parse(localStorage.getItem('favoriteRecipes')) !== null) {
     localStorage.setItem('favoriteRecipes', JSON.stringify([...JSON
@@ -20,4 +20,10 @@ export function addFavoriteRecipes(type, details) {
         name: details[`str${type}`],
         image: details[`str${type}Thumb`] }]));
   }
-}
+};
+
+export const removeFavoriteRecipes = (id) => {
+  localStorage.setItem('favoriteRecipes', JSON.stringify(JSON
+    .parse(localStorage.getItem('favoriteRecipes'))
+    .filter((e) => e.id !== id)));
+};

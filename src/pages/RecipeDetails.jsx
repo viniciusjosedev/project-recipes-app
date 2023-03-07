@@ -4,7 +4,7 @@ import clipboardCopy from 'clipboard-copy';
 import { fetchDetails } from '../services/foodAndDrink';
 import { getIngredients, getRecomendations } from '../helpers/ingredients';
 import style from '../styles/css/RecipeDetails.module.css';
-import { addFavoriteRecipes } from '../helpers/setLocalStorage';
+import { addFavoriteRecipes, removeFavoriteRecipes } from '../helpers/setLocalStorage';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
@@ -139,7 +139,11 @@ function RecipeDetails() {
         <button
           type="button"
           onClick={ () => {
-            addFavoriteRecipes(type, details);
+            if (favoriteRecipe) {
+              removeFavoriteRecipes(id);
+            } else {
+              addFavoriteRecipes(type, details);
+            }
             handleIcon();
           } }
         >
