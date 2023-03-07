@@ -5,6 +5,8 @@ import { fetchDetails } from '../services/foodAndDrink';
 import { getIngredients, getRecomendations } from '../helpers/ingredients';
 import style from '../styles/css/RecipeDetails.module.css';
 import { addFavoriteRecipes } from '../helpers/setLocalStorage';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
@@ -14,6 +16,7 @@ function RecipeDetails() {
   const [disabledButton, setDisabledButton] = useState(true);
   const [optionButton, setOptionButton] = useState();
   const [textCopied, setTextCopied] = useState(false);
+  const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const history = useHistory();
   const category = pathname.split('/')[1];
   const type = category === 'meals' ? 'Meal' : 'Drink';
@@ -36,10 +39,17 @@ function RecipeDetails() {
     }
   };
 
+  const handleIcon = () => {
+    setFavoriteRecipe(JSON.parse(localStorage.getItem('favoriteRecipes'))
+      && JSON.parse(localStorage.getItem('favoriteRecipes'))
+        .filter((e) => e.id === id).length > 0);
+  };
+
   useEffect(() => {
     const NUMBER_MAX_RECOMENDATIONS = 6;
     const init = async () => {
       funcOptionsButton();
+      handleIcon();
       const results = await fetchDetails(category, id);
       setDetails(results);
       setIngredients(getIngredients(results));
@@ -128,10 +138,16 @@ function RecipeDetails() {
         </button>
         <button
           type="button"
-          data-testid="favorite-btn"
-          onClick={ (() => addFavoriteRecipes(type, details)) }
+          onClick={ () => {
+            addFavoriteRecipes(type, details);
+            handleIcon();
+          } }
         >
-          Favoritar
+          <img
+            data-testid="favorite-btn"
+            src={ favoriteRecipe ? blackHeartIcon : whiteHeartIcon }
+            alt=""
+          />
         </button>
         { textCopied && (
           <p>
