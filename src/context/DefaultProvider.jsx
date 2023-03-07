@@ -3,6 +3,28 @@ import React, { useCallback, useState, useMemo } from 'react';
 import DefaultContext from './DefaultContext';
 import { fetchRecipes } from '../services/foodAndDrink';
 
+const MOCK_DONE_RCPS = [{
+  id: '52977',
+  type: 'meal',
+  nationality: 'brazilian',
+  category: 'Categoria',
+  alcoholicOrNot: 'Non Alcoholic',
+  name: 'Sopa',
+  image: 'Link da imagem',
+  doneDate: '2022/01/01',
+  tags: ['muito boa', 'dias frios'],
+}, {
+  id: '52978',
+  type: 'meal',
+  nationality: 'brazilian',
+  category: 'Categoria',
+  alcoholicOrNot: 'Non Alcoholic',
+  name: 'Sopa',
+  image: 'Link da imagem',
+  doneDate: '2022/01/01',
+  tags: ['difícil', 'para fazer com amigos', 'dias quentes'],
+}];
+
 function DefaultProvider({ children }) {
   const [searchedRecipes, setSearchedRecipes] = useState([[]]);
   const [searcheCategories, setSearcheCategories] = useState([]);
@@ -25,6 +47,7 @@ function DefaultProvider({ children }) {
     setSearchedRecipes,
     setSearcheCategories,
     searcheCategories,
+    MOCK_DONE_RCPS,
   }), [searchedRecipes, searchWord, setSearchWord, executeSearch, searcheCategories]);
 
   return (
