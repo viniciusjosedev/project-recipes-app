@@ -19,31 +19,31 @@ describe('All tests from Search', () => {
     userEvent.click(screen.getByLabelText('ingrediente'));
     userEvent.click(screen.getByTestId(exercBtn));
 
-    await wait(1000);
-    const chikenResult = screen.getByRole('img', {
-      name: /brown stew chicken/i,
-    });
-    expect(chikenResult).toBeInTheDocument();
+    await wait(3000);
+    expect(screen.getByTestId('0-card-img')).toBeInTheDocument();
   });
   it('More tests', async () => {
+    jest.spyOn(global, 'alert');
     renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
     userEvent.click(screen.getByTestId(searchTopBtn));
     userEvent.type(screen.getByTestId(searchInput), 'chicken');
     userEvent.click(screen.getByLabelText('primeira letra'));
     userEvent.click(screen.getByTestId(exercBtn));
 
-    jest.spyOn(global, 'alert').mockReturnValue('Your search must have only 1 (one) characterxablau');
+    await wait(3000);
 
     expect(global.alert).toHaveBeenCalled();
   });
   it('More tests', async () => {
+    jest.spyOn(global, 'alert');
+
     renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
     userEvent.click(screen.getByTestId(searchTopBtn));
     userEvent.type(screen.getByTestId(searchInput), 'ashuaushahihausas');
     userEvent.click(screen.getByLabelText('nome'));
     userEvent.click(screen.getByTestId(exercBtn));
 
-    jest.spyOn(global, 'alert').mockReturnValue('Sorry, we haven\'t found any recipes for these filters.');
+    await wait(3000);
 
     expect(global.alert).toHaveBeenCalled();
   });

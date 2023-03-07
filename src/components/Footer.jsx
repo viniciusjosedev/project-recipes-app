@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import drinkIcon from '../images/drinkIcon.svg';
-import mealIcon from '../images/mealIcon.svg';
+import drinkIcon from '../styles/images/drinkIcon.svg';
+import mealIcon from '../styles/images/mealIcon.svg';
 import style from '../styles/css/Footer.module.css';
 
 function Footer() {
