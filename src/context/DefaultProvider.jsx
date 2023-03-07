@@ -5,7 +5,7 @@ import { fetchRecipes } from '../services/foodAndDrink';
 
 const MOCK_DONE_RCPS = [{
   id: '52977',
-  type: 'meal',
+  type: 'drink',
   nationality: 'brazilian',
   category: 'Categoria',
   alcoholicOrNot: 'Non Alcoholic',
