@@ -1,0 +1,17 @@
+@mixin response($size) {
+	@if ($size == m) {
+		@media (min-width: 0px) {
+			@content;
+		}
+	}
+	@else if ($size == t) {
+		@media (min-width: 601px) {
+			@content;
+		}
+	}
+	@else if ($size == d) {
+		@media (min-width: 900px) {
+			@content;
+		}
+	}
+}

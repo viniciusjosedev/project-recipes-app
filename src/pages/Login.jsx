@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/css/Login.module.css';
+import backgroundImageLogin from '../styles/images/backgroundImageLogin.svg';
 
 function Login({ history: { push } }) {
   const [email, setEmail] = useState('');
@@ -24,45 +26,35 @@ function Login({ history: { push } }) {
   };
 
   return (
-    <div>
-      <form>
-        <label
-          htmlFor="email"
-        >
-          Email:
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Digite o e-mail"
-            data-testid="email-input"
-            onChange={ handleEmail }
-          />
-        </label>
-        <label
-          htmlFor="password"
-        >
-          Senha:
-          <input
-            type="password"
-            name="password"
-            id="password"
-            data-testid="password-input"
-            placeholder="Digite a senha"
-            onChange={ handlePassword }
-          />
-        </label>
-        <button
-          type="button"
-          data-testid="login-submit-btn"
-          disabled={ validation(email, password) }
-          onClick={ saveLocalStorage }
-        >
-          Enter
-        </button>
-      </form>
-
-    </div>
+    <main className={ styles.main }>
+      <img src={ backgroundImageLogin } alt="" />
+      <h1 className={ styles.h1Title }>Login</h1>
+      <input
+        type="email"
+        id="email"
+        className={ styles.inputEmail }
+        placeholder="Email"
+        data-testid="email-input"
+        onChange={ handleEmail }
+      />
+      <input
+        type="password"
+        className={ styles.inputEmail }
+        id="password"
+        data-testid="password-input"
+        placeholder="Digite a senha"
+        onChange={ handlePassword }
+      />
+      <button
+        type="button"
+        data-testid="login-submit-btn"
+        disabled={ validation(email, password) }
+        onClick={ saveLocalStorage }
+        className={ styles.button }
+      >
+        Enter
+      </button>
+    </main>
   );
 }
 

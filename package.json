@@ -12,9 +12,11 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.1",
-    "react-slick": "^0.29.0"
+    "react-slick": "^0.29.0",
+    "reactstrap": "^9.1.6"
   },
   "scripts": {
     "cy": "env CY_CLI=true cypress run",
