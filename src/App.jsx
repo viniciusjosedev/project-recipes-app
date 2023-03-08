@@ -1,68 +1,42 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
-// import DefaultProvider from './context/DefaultProvider';
+import Search from './pages/Search';
 import Header from './components/Header';
+import RecipeDetails from './pages/RecipeDetails';
+import Footer from './components/Footer';
+import RecipeInProgress from './pages/RecipeInProgress';
 
 function App() {
   return (
     <Switch>
       <Route
         exact
-        path="/"
+        path="/meals/:id/in-progress"
         render={ (props) => (
-          <Login { ...props } />
+          <RecipeInProgress { ...props } />
         ) }
       />
       <Route
         exact
-        path="/meals"
+        path="/drinks/:id/in-progress"
         render={ (props) => (
-          <Header { ...props } />
-
+          <RecipeInProgress { ...props } />
         ) }
       />
       <Route
         exact
-        path="/drinks"
+        path="/meals/:id"
         render={ (props) => (
-          <Header { ...props } />
+          <RecipeDetails { ...props } />
         ) }
       />
       <Route
         exact
-        path="/meals/:id-da-receita"
+        path="/drinks/:id"
         render={ (props) => (
-          <Login { ...props } />
-        ) }
-      />
-      <Route
-        exact
-        path="/drinks/:id-da-receita"
-        render={ (props) => (
-          <Login { ...props } />
-        ) }
-      />
-      <Route
-        exact
-        path="/meals/:id-da-receita/in-progress"
-        render={ (props) => (
-          <Login { ...props } />
-        ) }
-      />
-      <Route
-        exact
-        path="/drinks/:id-da-receita/in-progress"
-        render={ (props) => (
-          <Login { ...props } />
-        ) }
-      />
-      <Route
-        exact
-        path="/profile"
-        render={ (props) => (
-          <Header { ...props } />
+          <RecipeDetails { ...props } />
         ) }
       />
       <Route
@@ -77,6 +51,45 @@ function App() {
         path="/favorite-recipes"
         render={ (props) => (
           <Header { ...props } />
+        ) }
+      />
+      <Route
+        exact
+        path="/profile"
+        render={ (props) => (
+          <>
+            <Header { ...props } />
+            <Footer { ...props } />
+          </>
+        ) }
+      />
+      <Route
+        exact
+        path="/drinks"
+        render={ (props) => (
+          <>
+            <Header { ...props } />
+            <Search { ...props } />
+            <Footer { ...props } />
+          </>
+        ) }
+      />
+      <Route
+        exact
+        path="/meals"
+        render={ (props) => (
+          <>
+            <Header { ...props } />
+            <Search { ...props } />
+            <Footer { ...props } />
+          </>
+        ) }
+      />
+      <Route
+        exact
+        path="/"
+        render={ (props) => (
+          <Login { ...props } />
         ) }
       />
     </Switch>

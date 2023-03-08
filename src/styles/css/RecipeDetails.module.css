@@ -1,0 +1,40 @@
+.main {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main .divRecomendationCard {
+  background-color: black;
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 210px;
+}
+
+.main .divRecomendationCard div {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 110px;
+}
+
+.main .divRecomendationCard div img {
+  width: 100px;
+}
+
+.main .buttonStartRecipe {
+  bottom: 0;
+  position: fixed;
+}
+
+.footer {
+  background-color: blue;
+}
+
+.footer button {
+  height: 50px;
+  width: 50px;
+}
