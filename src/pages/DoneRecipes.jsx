@@ -1,24 +1,42 @@
-import { useContext, useState } from 'react';
-import DefaultContext from '../context/DefaultContext';
+import { useState, useEffect } from 'react';
+import copy from 'clipboard-copy';
 import DoneRecipeCard from '../components/DoneRecipeCard';
 
 function DoneRecipes() {
-  // Essa linha será retyirada quando tivermos a chave doneRecipes no LocalStorage
-  const { MOCK_DONE_RCPS } = useContext(DefaultContext);
-  const [renderRecipes, setRenderRecipes] = useState(MOCK_DONE_RCPS);
+  const [doneRecipes, setDoneRecipes] = useState([]);
+  const [renderRecipes, setRenderRecipes] = useState([]);
+  const [showCopyMessage, setShowCopyMessage] = useState(false);
+
+  useEffect(() => {
+    const localStorageDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    setDoneRecipes(localStorageDoneRecipes);
+    setRenderRecipes(localStorageDoneRecipes);
+  }, []);
+
+  const handleShareClick = (copiedLink) => {
+    const TIME_TO_SHOW = 3000;
+    copy(copiedLink);
+    setShowCopyMessage(true);
+    setTimeout(() => setShowCopyMessage(false), TIME_TO_SHOW);
+  };
 
   const handleFilter = (filterType) => {
     console.log(filterType);
     if (filterType === 'all') {
-      setRenderRecipes(MOCK_DONE_RCPS);
+      setRenderRecipes(doneRecipes);
       return;
     }
-    const filteredRecipes = MOCK_DONE_RCPS.filter((recipe) => recipe.type === filterType);
+    const filteredRecipes = doneRecipes.filter((recipe) => recipe.type === filterType);
     setRenderRecipes(filteredRecipes);
   };
 
   return (
     <div>
+      { showCopyMessage && (
+        <p>
+          Link copied!
+        </p>
+      ) }
       <button
         type="button"
         data-testid="filter-by-all-btn"
@@ -49,6 +67,7 @@ function DoneRecipes() {
             key={ index }
             { ...recipe }
             index={ index }
+            handleShareClick={ handleShareClick }
           />
         ))
       }

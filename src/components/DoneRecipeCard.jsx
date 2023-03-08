@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import copy from 'clipboard-copy';
+import shareIcon from '../images/shareIcon.svg';
+import style from '../styles/css/FavoriteAndDoneRecipes.module.css';
 
 function DoneRecipeCard(props) {
   const { index, image, category, name, doneDate, tags, type, id,
-    nationality, alcoholicOrNot } = props;
+    nationality, alcoholicOrNot, handleShareClick } = props;
 
   const pathBase = window.location.href.replace('/done-recipes', '');
   const detailsPath = `/${type}s/${id}`;
@@ -15,17 +16,19 @@ function DoneRecipeCard(props) {
     <div>
       <button
         type="button"
-        value={ detailsCompletePath }
-        data-testid={ `${index}-horizontal-share-btn` }
-        onClick={ ({ target: { value } }) => (
-          copy(value)
-        ) }
+        onClick={ () => handleShareClick(detailsCompletePath) }
       >
-        Share
+        <img
+          src={ shareIcon }
+          className={ style.shareBtnIcon }
+          alt="compartilhar"
+          data-testid={ `${index}-horizontal-share-btn` }
+        />
       </button>
       <Link to={ detailsPath }>
         <img
           src={ image }
+          className={ style.recipeCardImg }
           data-testid={ `${index}-horizontal-image` }
           alt="foto da receita"
         />
@@ -51,7 +54,7 @@ function DoneRecipeCard(props) {
       }
       <h3 data-testid={ `${index}-horizontal-top-text` }>{ category }</h3>
       <Link to={ detailsPath }>
-        <h2 data-testid={ `${index}-horizontal-top-text` }>{ name }</h2>
+        <h2 data-testid={ `${index}-horizontal-name` }>{ name }</h2>
       </Link>
       <p data-testid={ `${index}-horizontal-done-date` }>{ doneDate }</p>
       <ul>
@@ -81,6 +84,7 @@ DoneRecipeCard.propTypes = {
   alcoholicOrNot: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   id: PropTypes.string.isRequired,
+  handleShareClick: PropTypes.func.isRequired,
 };
 
 export default DoneRecipeCard;

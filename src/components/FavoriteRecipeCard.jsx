@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
+import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
+import style from '../styles/css/FavoriteAndDoneRecipes.module.css';
 
 function FavoriteRecipeCard(props) {
   const { index, image, category, name, id,
-    type, removeFromFavorite, nationality, alcoholicOrNot } = props;
+    type, removeFromFavorite, nationality, alcoholicOrNot, handleShareClick } = props;
 
-  const pathBase = window.location.href.replace('/done-recipes', '');
+  const pathBase = window.location.href.replace('/favorite-recipes', '');
   const detailsPath = `/${type}s/${id}`;
   const detailsCompletePath = `${pathBase}/${type}s/${id}`;
 
@@ -15,14 +16,11 @@ function FavoriteRecipeCard(props) {
     <div>
       <button
         type="button"
-        value={ detailsCompletePath }
-        // data-testid={ `${index}-horizontal-share-btn` }
-        onClick={ ({ target: { value } }) => (
-          copy(value)
-        ) }
+        onClick={ () => handleShareClick(detailsCompletePath) }
       >
         <img
           src={ shareIcon }
+          className={ style.shareBtnIcon }
           alt="compartilhar"
           data-testid={ `${index}-horizontal-share-btn` }
         />
@@ -30,6 +28,7 @@ function FavoriteRecipeCard(props) {
       <Link to={ detailsPath }>
         <img
           src={ image }
+          className={ style.recipeCardImg }
           alt="foto da receita"
           data-testid={ `${index}-horizontal-image` }
         />
@@ -59,11 +58,13 @@ function FavoriteRecipeCard(props) {
       </Link>
       <button
         type="button"
-        value={ id }
-        onClick={ ({ target: { value } }) => removeFromFavorite(value) }
-        data-testid={ `${index}-horizontal-favorite-btn` }
+        onClick={ () => removeFromFavorite(id) }
       >
-        Desfavoritar
+        <img
+          data-testid={ `${index}-horizontal-favorite-btn` }
+          src={ blackHeartIcon }
+          alt=""
+        />
       </button>
     </div>
   );
@@ -79,6 +80,7 @@ FavoriteRecipeCard.propTypes = {
   removeFromFavorite: PropTypes.func.isRequired,
   nationality: PropTypes.string.isRequired,
   alcoholicOrNot: PropTypes.string.isRequired,
+  handleShareClick: PropTypes.func.isRequired,
 };
 
 export default FavoriteRecipeCard;
