@@ -34,7 +34,7 @@ function App() {
       />
       <Route
         exact
-        path="/drins/:id"
+        path="/drinks/:id"
         render={ (props) => (
           <RecipeDetails { ...props } />
         ) }

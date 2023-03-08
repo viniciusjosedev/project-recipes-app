@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import clipboardCopy from 'clipboard-copy';
 import DefaultContext from '../context/DefaultContext';
 import { getIngredients } from '../helpers/ingredients';
 import { removeFavoriteRecipes,
-  addFavoriteRecipes,
+  addFavoriteRecipes, addDoneRecipes,
   addProgressInRecipes, removeProgressInRecipes } from '../helpers/setLocalStorage';
 import whiteHeartIcon from '../styles/images/whiteHeartIcon.svg';
 import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
@@ -15,11 +15,13 @@ function RecipeInProgress() {
   const [ingredients, setIngredients] = useState([]);
   const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const { pathname } = useLocation();
+  const history = useHistory();
   const id = pathname.split('/')[2];
   const category = pathname.split('/')[1];
   const type = category === 'meals' ? 'Meal' : 'Drink';
   const { details, setDetails } = useContext(DefaultContext);
   const [arrayChecked, setArrayChecked] = useState([]);
+  const [textCopied, setTextCopied] = useState(false);
 
   const handleIcon = () => {
     setFavoriteRecipe(JSON.parse(localStorage.getItem('favoriteRecipes'))
@@ -85,7 +87,7 @@ function RecipeInProgress() {
                     setArrayChecked([...arrayChecked, ingredient.name]);
                     addProgressInRecipes(ingredient.name, category, id);
                   } else {
-                    console.log('teste');
+                    // console.log('teste');
                     setArrayChecked(arrayChecked.filter((e) => e !== ingredient.name));
                     removeProgressInRecipes(ingredient.name, category, id);
                   }
@@ -116,16 +118,27 @@ function RecipeInProgress() {
       <button
         type="button"
         onClick={ () => {
-          clipboardCopy(window.location.href);
-          // setTextCopied(true);
+          // console.log(window.location.href.split('/in-progress'));
+          clipboardCopy(window.location.href.split('/in-progress')[0]);
+          setTextCopied(true);
         } }
         data-testid="share-btn"
       >
         Compartilhar
       </button>
+      { textCopied && (
+        <p>
+          Link copied!
+        </p>
+      ) }
       <button
         type="button"
         data-testid="finish-recipe-btn"
+        onClick={ () => {
+          addDoneRecipes(type, details);
+          history.push('/done-recipes');
+        } }
+        disabled={ ingredients.length !== arrayChecked.length }
       >
         Finalizar Receita
       </button>
