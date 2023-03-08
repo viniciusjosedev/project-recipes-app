@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import clipboardCopy from 'clipboard-copy';
 import { fetchDetails } from '../services/foodAndDrink';
 import { getIngredients, getRecomendations } from '../helpers/ingredients';
 import style from '../styles/css/RecipeDetails.module.css';
-import { addFavoriteRecipes, removeFavoriteRecipes } from '../helpers/setLocalStorage';
+import { addFavoriteRecipes,
+  removeFavoriteRecipes } from '../helpers/setLocalStorage';
 import whiteHeartIcon from '../styles/images/whiteHeartIcon.svg';
 import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
+import DefaultContext from '../context/DefaultContext';
 
 function RecipeDetails() {
+  // console.log(match);
+  const { details, setDetails } = useContext(DefaultContext);
   const { pathname } = useLocation();
-  const [details, setDetails] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [disabledButton, setDisabledButton] = useState(true);

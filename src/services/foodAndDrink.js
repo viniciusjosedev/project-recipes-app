@@ -11,7 +11,7 @@ export default async function fetchRecipesAndCategoresInitial(path) {
   if (path === '/drinks') {
     const requisicao = await (await fetch(`${BASE_URL_DRINK}search.php?s=`)).json();
     const requisaoCategory = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')).json();
-    console.log(requisaoCategory);
+    // console.log(requisaoCategory);
     return { receitas: [requisicao.drinks, true],
       category: requisaoCategory.drinks };
   }
