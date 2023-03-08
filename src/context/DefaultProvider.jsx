@@ -28,6 +28,7 @@ const MOCK_DONE_RCPS = [{
 function DefaultProvider({ children }) {
   const [searchedRecipes, setSearchedRecipes] = useState([[]]);
   const [searcheCategories, setSearcheCategories] = useState([]);
+  const [details, setDetails] = useState({});
   const [searchWord, setSearchWord] = useState('');
 
   const executeSearch = useCallback(async (searchType, category) => {
@@ -48,7 +49,10 @@ function DefaultProvider({ children }) {
     setSearcheCategories,
     searcheCategories,
     MOCK_DONE_RCPS,
-  }), [searchedRecipes, searchWord, setSearchWord, executeSearch, searcheCategories]);
+    details,
+    setDetails,
+  }), [searchedRecipes, searchWord,
+    setSearchWord, executeSearch, searcheCategories, details]);
 
   return (
     <DefaultContext.Provider value={ values }>

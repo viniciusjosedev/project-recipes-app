@@ -8,6 +8,7 @@ import RecipeDetails from './pages/RecipeDetails';
 import Footer from './components/Footer';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
+import RecipeInProgress from './pages/RecipeInProgress';
 
 function App() {
   return (
@@ -21,60 +22,30 @@ function App() {
       />
       <Route
         exact
-        path="/meals"
-        render={ (props) => (
-          <>
-            <Header { ...props } />
-            <Search { ...props } />
-            <Footer { ...props } />
-          </>
-        ) }
-      />
-      <Route
-        exact
-        path="/drinks"
-        render={ (props) => (
-          <>
-            <Header { ...props } />
-            <Search { ...props } />
-            <Footer { ...props } />
-          </>
-        ) }
-      />
-      <Route
-        path="/meals/:id"
-        render={ (props) => (
-          <RecipeDetails { ...props } />
-        ) }
-      />
-      <Route
-        path="/drinks/:id"
-        render={ (props) => (
-          <RecipeDetails { ...props } />
-        ) }
-      />
-      <Route
-        exact
         path="/meals/:id/in-progress"
         render={ (props) => (
-          <Login { ...props } />
+          <RecipeInProgress { ...props } />
         ) }
       />
       <Route
         exact
         path="/drinks/:id/in-progress"
         render={ (props) => (
-          <Login { ...props } />
+          <RecipeInProgress { ...props } />
         ) }
       />
       <Route
         exact
-        path="/profile"
+        path="/meals/:id"
         render={ (props) => (
-          <>
-            <Header { ...props } />
-            <Footer { ...props } />
-          </>
+          <RecipeDetails { ...props } />
+        ) }
+      />
+      <Route
+        exact
+        path="/drinks/:id"
+        render={ (props) => (
+          <RecipeDetails { ...props } />
         ) }
       />
       <Route
@@ -94,6 +65,38 @@ function App() {
           <>
             <Header { ...props } />
             <FavoriteRecipes />
+          </>
+        ) }
+      />
+      <Route
+        exact
+        path="/profile"
+        render={ (props) => (
+          <>
+            <Header { ...props } />
+            <Footer { ...props } />
+          </>
+        ) }
+      />
+      <Route
+        exact
+        path="/drinks"
+        render={ (props) => (
+          <>
+            <Header { ...props } />
+            <Search { ...props } />
+            <Footer { ...props } />
+          </>
+        ) }
+      />
+      <Route
+        exact
+        path="/meals"
+        render={ (props) => (
+          <>
+            <Header { ...props } />
+            <Search { ...props } />
+            <Footer { ...props } />
           </>
         ) }
       />
