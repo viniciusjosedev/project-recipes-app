@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import RecipeInProgress from './pages/RecipeInProgress';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -74,6 +75,7 @@ function App() {
         render={ (props) => (
           <>
             <Header { ...props } />
+            <Profile { ...props } />
             <Footer { ...props } />
           </>
         ) }
