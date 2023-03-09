@@ -1,51 +1,58 @@
-@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
-@media (min-width: 0px) {
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
+
+@media ( min-width : 0 ) {
+
   .main {
-    font-family: "Epilogue", sans-serif;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+    font-family: Epilogue , sans-serif;
     height: 100%;
+    width: 100%;
   }
+
   .main img {
     width: 100%;
   }
+
   .main .h1Title {
+    color: #41197f;
+    font-size: 20px;
     font-style: italic;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 20px;
     letter-spacing: 0.165em;
-    text-transform: uppercase;
-    color: #41197F;
+    line-height: 20px;
     margin-bottom: 19px;
+    text-transform: uppercase;
   }
+
   .main .inputEmail {
-    width: 276px;
     height: 40px;
-    padding-left: 20px;
     margin-bottom: 10px;
+    padding-left: 20px;
+    width: 276px;
   }
+
   .main .inputEmail::placeholder {
+    color: #41197f;
+    font-size: 14px;
     font-style: normal;
     font-weight: 300;
-    font-size: 14px;
     line-height: 14px;
-    color: #41197F;
   }
+
   .main .button {
+    background-color: #fcc436;
     border: none;
-    width: 276px;
-    height: 40px;
-    background-color: #FCC436;
+    color: white;
+    font-size: 14px;
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
+    height: 40px;
+    letter-spacing: 0.03em;
     line-height: 14px;
     text-align: center;
-    letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: #FFFFFF;
+    width: 276px;
   }
 }
