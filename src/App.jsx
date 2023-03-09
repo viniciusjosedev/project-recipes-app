@@ -6,11 +6,21 @@ import Search from './pages/Search';
 import Header from './components/Header';
 import RecipeDetails from './pages/RecipeDetails';
 import Footer from './components/Footer';
+import DoneRecipes from './pages/DoneRecipes';
+import FavoriteRecipes from './pages/FavoriteRecipes';
 import RecipeInProgress from './pages/RecipeInProgress';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <Switch>
+      <Route
+        exact
+        path="/"
+        render={ (props) => (
+          <Login { ...props } />
+        ) }
+      />
       <Route
         exact
         path="/meals/:id/in-progress"
@@ -43,14 +53,20 @@ function App() {
         exact
         path="/done-recipes"
         render={ (props) => (
-          <Header { ...props } />
+          <>
+            <Header { ...props } />
+            <DoneRecipes />
+          </>
         ) }
       />
       <Route
         exact
         path="/favorite-recipes"
         render={ (props) => (
-          <Header { ...props } />
+          <>
+            <Header { ...props } />
+            <FavoriteRecipes />
+          </>
         ) }
       />
       <Route
@@ -59,6 +75,7 @@ function App() {
         render={ (props) => (
           <>
             <Header { ...props } />
+            <Profile { ...props } />
             <Footer { ...props } />
           </>
         ) }
@@ -83,13 +100,6 @@ function App() {
             <Search { ...props } />
             <Footer { ...props } />
           </>
-        ) }
-      />
-      <Route
-        exact
-        path="/"
-        render={ (props) => (
-          <Login { ...props } />
         ) }
       />
     </Switch>
