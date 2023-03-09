@@ -1,3 +1,61 @@
-.teste {
-  background-color: rgb(211, 211, 221);
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@media (min-width: 0px) {
+  .header {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .header .divHeader {
+    display: flex;
+    width: 100%;
+    background: #FCDC36;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .header .divHeader .imageHomeRecipeApp {
+    width: 172.5px;
+    height: 39.28px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  .header .divHeader div button {
+    border: none;
+    background: transparent;
+    margin-right: 16.15px;
+  }
+  .header .divHeader div button img {
+    width: 26.85px;
+    height: 26.85px;
+  }
+  .header .divHeader div a img {
+    width: 28.71px;
+    height: 28.71px;
+  }
+  .header .divTitleAndSearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 31px;
+    margin-bottom: 24px;
+  }
+  .header .divTitleAndSearch img {
+    width: 40.33px;
+    height: 29.33px;
+    margin-bottom: 13.67px;
+  }
+  .header .divTitleAndSearch h1 {
+    font-family: "Epilogue", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 20px;
+    color: #41197F;
+    width: auto;
+    letter-spacing: 0.105em;
+    text-transform: uppercase;
+  }
+  .header .divTitleAndSearch div {
+    background-color: red;
+  }
 }

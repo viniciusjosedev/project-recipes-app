@@ -30,8 +30,6 @@ function Recipes() {
       history.push(`/${type}/${id}`);
     } else {
       setRenderRecipes(searchedRecipes[0]);
-      // console.log(searchedRecipes[0].length
-      //   > RECIPES_TO_RENDER ? RECIPES_TO_RENDER : searchedRecipes[0].length);
     }
   }, [history, pathname, searcheCategories, searchedRecipes]);
 
@@ -61,7 +59,7 @@ function Recipes() {
   };
 
   return (
-    <div>
+    <section>
       {searcheCategories && renderCategories.map((e) => (
         <button
           key={ e.strCategory }
@@ -84,7 +82,7 @@ function Recipes() {
             <RecipeCard key={ index } cardData={ { recipe, index, pathname } } />
           )))
       }
-    </div>
+    </section>
   );
 }
 

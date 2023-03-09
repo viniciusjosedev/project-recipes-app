@@ -16,13 +16,6 @@ function App() {
     <Switch>
       <Route
         exact
-        path="/"
-        render={ (props) => (
-          <Login { ...props } />
-        ) }
-      />
-      <Route
-        exact
         path="/meals/:id/in-progress"
         render={ (props) => (
           <RecipeInProgress { ...props } />
@@ -100,6 +93,13 @@ function App() {
             <Search { ...props } />
             <Footer { ...props } />
           </>
+        ) }
+      />
+      <Route
+        exact
+        path="/"
+        render={ (props) => (
+          <Login { ...props } />
         ) }
       />
     </Switch>

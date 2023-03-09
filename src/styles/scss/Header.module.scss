@@ -1,0 +1,73 @@
+@import './responsividade';
+@import './_fonts';
+
+@include response(m) {
+	.header {
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		.divHeader {
+			display: flex;
+			width: 100%;
+			background: #FCDC36;
+			justify-content: space-around;
+			align-items: center;
+			.imageHomeRecipeApp {
+				// margin-left: 26px;
+				width: 172.5px;
+				height: 39.28px;
+				margin-top: 6px;
+				margin-bottom: 6px;
+			}
+			div {
+				// background-color: red;
+				button {
+					border: none;
+					background: transparent;
+					margin-right: 16.15px;
+					img {
+						width: 26.85px;
+						height: 26.85px;
+					}
+				}
+				a {
+					img {
+						width: 28.71px;
+						height: 28.71px;
+					}
+				}
+			}
+		}
+		.divTitleAndSearch {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			// background-color: red;
+			margin-top: 31px;
+			margin-bottom: 24px;
+			img {
+				width: 40.33px;
+				height: 29.33px;
+				margin-bottom: 13.67px
+			}
+			h1 {
+				@include fontEpilogue;
+				font-style: normal;
+				font-weight: 900;
+				font-size: 20px;
+				line-height: 20px;
+				color: #41197F;
+				width: auto;
+				letter-spacing: 0.105em;
+				text-transform: uppercase;
+			}
+			div {
+				background-color: red;
+			}
+		}
+	}
+}
+
+
+

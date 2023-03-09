@@ -1,0 +1,15 @@
+@import './responsividade';
+@import './_fonts';
+
+@include response(m) {
+	.footer {
+		display: flex;
+		justify-content: center;
+		background-color: #333;
+		// bottom: 0;
+		color: white;
+		// position: fixed;
+		width: 100%;
+	}
+	
+}

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../styles/images/shareIcon.svg';
 import style from '../styles/css/FavoriteAndDoneRecipes.module.css';
 
 function DoneRecipeCard(props) {

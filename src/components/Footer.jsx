@@ -2,14 +2,14 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import drinkIcon from '../styles/images/drinkIcon.svg';
 import mealIcon from '../styles/images/mealIcon.svg';
-import style from '../styles/css/Footer.module.css';
+import styles from '../styles/css/Footer.module.css';
 
 function Footer() {
   const history = useHistory();
   return (
     <footer
       data-testid="footer"
-      className={ style.footer }
+      className={ styles.footer }
     >
 
       <button

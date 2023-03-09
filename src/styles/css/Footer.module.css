@@ -1,10 +1,10 @@
-.footer {
-  background-color: #333;
-  bottom: 0;
-  color: white;
-  left: 0;
-  padding: 20px;
-  position: fixed;
-  text-align: center;
-  width: 100%;
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@media (min-width: 0px) {
+  .footer {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    color: white;
+    width: 100%;
+  }
 }
