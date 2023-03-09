@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../styles/images/shareIcon.svg';
 import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
 import style from '../styles/css/FavoriteAndDoneRecipes.module.css';
 
@@ -8,7 +8,9 @@ function FavoriteRecipeCard(props) {
   const { index, image, category, name, id, doneDate, type, cardType,
     removeFromFavorite, nationality, alcoholicOrNot, handleShareClick, tags } = props;
 
-  const pathBase = window.location.href.replace('/favorite-recipes', '');
+  const url = cardType === 'doneRecipe' ? '/done-recipes' : '/favorite-recipes';
+
+  const pathBase = window.location.href.replace(url, '');
   const detailsPath = `/${type}s/${id}`;
   const detailsCompletePath = `${pathBase}/${type}s/${id}`;
 
@@ -43,7 +45,6 @@ function FavoriteRecipeCard(props) {
             {' '}
             {category}
           </h3>)
-
       }
       {
         type === 'drink'

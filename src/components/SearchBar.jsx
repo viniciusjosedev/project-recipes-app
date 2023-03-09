@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom/';
 import DefaultContext from '../context/DefaultContext';
 
-function SearchBar({ render }) {
+function SearchBar() {
   const [inputRadio, setInputRadio] = useState({});
   const { pathname } = useLocation();
 
@@ -19,54 +19,50 @@ function SearchBar({ render }) {
 
   return (
     <section>
-      {render && (
-        <>
-          <h1>Pesquisa</h1>
-          <label>
-            ingrediente
-            <input
-              type="radio"
-              name="search-radio"
-              data-testid="ingredient-search-radio"
-              value="ingredient"
-              onChange={ ({ target: { value } }) => setInputRadio(
-                { option: value, letter: 'i' },
-              ) }
-            />
-          </label>
-          <label>
-            nome
-            <input
-              type="radio"
-              name="search-radio"
-              data-testid="name-search-radio"
-              value="name"
-              onChange={ ({ target: { value } }) => setInputRadio(
-                { option: value, letter: 's' },
-              ) }
-            />
-          </label>
-          <label>
-            primeira letra
-            <input
-              type="radio"
-              name="search-radio"
-              value="firstLetter"
-              data-testid="first-letter-search-radio"
-              onChange={ ({ target: { value } }) => setInputRadio(
-                { option: value, letter: 'f' },
-              ) }
-            />
-          </label>
-          <button
-            type="button"
-            data-testid="exec-search-btn"
-            onClick={ () => handleSearch() }
-          >
-            Pesquisar
-          </button>
-        </>
-      )}
+      <h1>Pesquisa</h1>
+      <label>
+        ingrediente
+        <input
+          type="radio"
+          name="search-radio"
+          data-testid="ingredient-search-radio"
+          value="ingredient"
+          onChange={ ({ target: { value } }) => setInputRadio(
+            { option: value, letter: 'i' },
+          ) }
+        />
+      </label>
+      <label>
+        nome
+        <input
+          type="radio"
+          name="search-radio"
+          data-testid="name-search-radio"
+          value="name"
+          onChange={ ({ target: { value } }) => setInputRadio(
+            { option: value, letter: 's' },
+          ) }
+        />
+      </label>
+      <label>
+        primeira letra
+        <input
+          type="radio"
+          name="search-radio"
+          value="firstLetter"
+          data-testid="first-letter-search-radio"
+          onChange={ ({ target: { value } }) => setInputRadio(
+            { option: value, letter: 'f' },
+          ) }
+        />
+      </label>
+      <button
+        type="button"
+        data-testid="exec-search-btn"
+        onClick={ () => handleSearch() }
+      >
+        Pesquisar
+      </button>
     </section>
   );
 }
