@@ -8,7 +8,9 @@ function DoneRecipes() {
   const [showCopyMessage, setShowCopyMessage] = useState(false);
 
   useEffect(() => {
-    const localStorageDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    const localStorageDoneRecipes = JSON.parse(localStorage
+      .getItem('doneRecipes')) !== null ? JSON.parse(localStorage
+        .getItem('doneRecipes')) : [];
     setDoneRecipes(localStorageDoneRecipes);
     setRenderRecipes(localStorageDoneRecipes);
   }, []);

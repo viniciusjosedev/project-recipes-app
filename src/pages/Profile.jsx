@@ -2,7 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 function Profile() {
-  const data = JSON.parse(localStorage.getItem('user'));
+  const data = JSON.parse(localStorage.getItem('user')) !== null
+    ? JSON.parse(localStorage.getItem('user')) : {};
   const { email } = data;
   const history = useHistory();
   const logoutAction = () => {
@@ -20,7 +21,6 @@ function Profile() {
         onClick={ () => history.push('/done-recipes') }
       >
         Done Recipes
-
       </button>
       <button
         data-testid="profile-favorite-btn"

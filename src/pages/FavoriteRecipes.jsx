@@ -9,7 +9,8 @@ function FavoriteRecipes() {
   const [showCopyMessage, setShowCopyMessage] = useState(false);
 
   useEffect(() => {
-    const localStorageFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const localStorageFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'))
+      !== null ? JSON.parse(localStorage.getItem('favoriteRecipes')) : [];
     setFavoriteRecipes(localStorageFavorites);
     setRenderRecipes(localStorageFavorites);
   }, []);
