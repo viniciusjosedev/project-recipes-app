@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import DoneRecipeCard from '../components/DoneRecipeCard';
+// import DoneRecipeCard from '../components/DoneRecipeCard';
 import useCopy from '../context/customHooks/useCopy';
+import DoneAndFavoriteCard from '../components/DoneAndFavoriteCard';
 
 function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState([]);
@@ -60,11 +61,12 @@ function DoneRecipes() {
       </button>
       {
         renderRecipes.map((recipe, index) => (
-          <DoneRecipeCard
+          <DoneAndFavoriteCard
             key={ index }
             { ...recipe }
             index={ index }
             handleShareClick={ handleShareClick }
+            cardType="doneRecipe"
           />
         ))
       }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
+// import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
+import DoneAndFavoriteCard from '../components/DoneAndFavoriteCard';
 import { removeFavoriteRecipes } from '../helpers/setLocalStorage';
 import useCopy from '../context/customHooks/useCopy';
 
@@ -73,12 +74,13 @@ function FavoriteRecipes() {
       </button>
       {
         renderRecipes.map((recipe, index) => (
-          <FavoriteRecipeCard
+          <DoneAndFavoriteCard
             key={ index }
             { ...recipe }
             index={ index }
             removeFromFavorite={ removeFromFavorite }
             handleShareClick={ handleShareClick }
+            cardType="favoriteRecipe"
           />
         ))
       }
