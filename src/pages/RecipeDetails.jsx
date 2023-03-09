@@ -73,6 +73,11 @@ function RecipeDetails() {
           alt="imagem da receita"
         />
         <h2 data-testid="recipe-title">{details[`str${type}`]}</h2>
+        { showCopyMessage && (
+          <p>
+            Link copied!
+          </p>
+        ) }
         {
           category === 'drinks'
             ? (
@@ -156,11 +161,6 @@ function RecipeDetails() {
             alt=""
           />
         </button>
-        { showCopyMessage && (
-          <p>
-            Link copied!
-          </p>
-        ) }
         {disabledButton && (
           <button
             data-testid="start-recipe-btn"
