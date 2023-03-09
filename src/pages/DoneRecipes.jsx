@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import copy from 'clipboard-copy';
-import DoneRecipeCard from '../components/DoneRecipeCard';
+// import DoneRecipeCard from '../components/DoneRecipeCard';
+import useCopy from '../context/customHooks/useCopy';
+import DoneAndFavoriteCard from '../components/DoneAndFavoriteCard';
 
 function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState([]);
   const [renderRecipes, setRenderRecipes] = useState([]);
-  const [showCopyMessage, setShowCopyMessage] = useState(false);
+  const [showCopyMessage, copyAndShowMessage] = useCopy();
 
   useEffect(() => {
     const localStorageDoneRecipes = JSON.parse(localStorage
@@ -16,10 +17,7 @@ function DoneRecipes() {
   }, []);
 
   const handleShareClick = (copiedLink) => {
-    const TIME_TO_SHOW = 3000;
-    copy(copiedLink);
-    setShowCopyMessage(true);
-    setTimeout(() => setShowCopyMessage(false), TIME_TO_SHOW);
+    copyAndShowMessage(copiedLink);
   };
 
   const handleFilter = (filterType) => {
@@ -65,11 +63,12 @@ function DoneRecipes() {
       </button>
       {
         renderRecipes.map((recipe, index) => (
-          <DoneRecipeCard
+          <DoneAndFavoriteCard
             key={ index }
             { ...recipe }
             index={ index }
             handleShareClick={ handleShareClick }
+            cardType="doneRecipe"
           />
         ))
       }

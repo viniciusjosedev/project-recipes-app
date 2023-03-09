@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import shareIcon from '../styles/images/shareIcon.svg';
+import shareIcon from '../images/shareIcon.svg';
+import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
 import style from '../styles/css/FavoriteAndDoneRecipes.module.css';
 
-function DoneRecipeCard(props) {
-  const { index, image, category, name, doneDate, tags, type, id,
-    nationality, alcoholicOrNot, handleShareClick } = props;
+function FavoriteRecipeCard(props) {
+  const { index, image, category, name, id, doneDate, type, cardType,
+    removeFromFavorite, nationality, alcoholicOrNot, handleShareClick, tags } = props;
 
-  const pathBase = window.location.href.replace('/done-recipes', '');
+  const pathBase = window.location.href.replace('/favorite-recipes', '');
   const detailsPath = `/${type}s/${id}`;
   const detailsCompletePath = `${pathBase}/${type}s/${id}`;
 
@@ -28,8 +29,8 @@ function DoneRecipeCard(props) {
         <img
           src={ image }
           className={ style.recipeCardImg }
-          data-testid={ `${index}-horizontal-image` }
           alt="foto da receita"
+          data-testid={ `${index}-horizontal-image` }
         />
       </Link>
       {
@@ -55,35 +56,52 @@ function DoneRecipeCard(props) {
       <Link to={ detailsPath }>
         <h2 data-testid={ `${index}-horizontal-name` }>{ name }</h2>
       </Link>
-      <p data-testid={ `${index}-horizontal-done-date` }>{ doneDate }</p>
-      <ul>
-        {tags.slice(0, 2).map((tag) => (
-          <li
-            data-testid={ `${index}-${tag}-horizontal-tag` }
-            key={ `${index}${tag}` }
+      {
+        cardType === 'doneRecipe' ? (
+          <>
+            <p data-testid={ `${index}-horizontal-done-date` }>{ doneDate }</p>
+            <ul>
+              {tags.slice(0, 2).map((tag) => (
+                <li
+                  data-testid={ `${index}-${tag}-horizontal-tag` }
+                  key={ `${index}${tag}` }
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <button
+            type="button"
+            onClick={ () => removeFromFavorite(id) }
           >
-            {tag}
-          </li>
-        ))}
-      </ul>
-
+            <img
+              data-testid={ `${index}-horizontal-favorite-btn` }
+              src={ blackHeartIcon }
+              alt=""
+            />
+          </button>
+        )
+      }
     </div>
-
   );
 }
 
-DoneRecipeCard.propTypes = {
+FavoriteRecipeCard.propTypes = {
   index: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   doneDate: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  removeFromFavorite: PropTypes.func.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   nationality: PropTypes.string.isRequired,
   alcoholicOrNot: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  id: PropTypes.string.isRequired,
+  cardType: PropTypes.string.isRequired,
   handleShareClick: PropTypes.func.isRequired,
 };
 
-export default DoneRecipeCard;
+export default FavoriteRecipeCard;
