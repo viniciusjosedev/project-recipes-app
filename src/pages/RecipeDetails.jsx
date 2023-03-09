@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import clipboardCopy from 'clipboard-copy';
 import { fetchDetails } from '../services/foodAndDrink';
 import { getIngredients, getRecomendations } from '../helpers/ingredients';
 import style from '../styles/css/RecipeDetails.module.css';
@@ -9,6 +8,7 @@ import { addFavoriteRecipes,
 import whiteHeartIcon from '../styles/images/whiteHeartIcon.svg';
 import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
 import DefaultContext from '../context/DefaultContext';
+import useCopy from '../context/customHooks/useCopy';
 
 function RecipeDetails() {
   // console.log(match);
@@ -18,7 +18,8 @@ function RecipeDetails() {
   const [recomendations, setRecomendations] = useState([]);
   const [disabledButton, setDisabledButton] = useState(true);
   const [optionButton, setOptionButton] = useState();
-  const [textCopied, setTextCopied] = useState(false);
+  // const [textCopied, setTextCopied] = useState(false);
+  const [showCopyMessage, copyAndShowMessage] = useCopy();
   const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const history = useHistory();
   const category = pathname.split('/')[1];
@@ -132,8 +133,7 @@ function RecipeDetails() {
         <button
           type="button"
           onClick={ () => {
-            clipboardCopy(window.location.href);
-            setTextCopied(true);
+            copyAndShowMessage(window.location.href);
           } }
           data-testid="share-btn"
         >
@@ -156,7 +156,7 @@ function RecipeDetails() {
             alt=""
           />
         </button>
-        { textCopied && (
+        { showCopyMessage && (
           <p>
             Link copied!
           </p>

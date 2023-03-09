@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import copy from 'clipboard-copy';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
 import { removeFavoriteRecipes } from '../helpers/setLocalStorage';
+import useCopy from '../context/customHooks/useCopy';
 
 function FavoriteRecipes() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [renderRecipes, setRenderRecipes] = useState(favoriteRecipes);
-  const [showCopyMessage, setShowCopyMessage] = useState(false);
+  const [showCopyMessage, copyAndShowMessage] = useCopy();
 
   useEffect(() => {
     const localStorageFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -15,10 +15,7 @@ function FavoriteRecipes() {
   }, []);
 
   const handleShareClick = (copiedLink) => {
-    const TIME_TO_SHOW = 3000;
-    copy(copiedLink);
-    setShowCopyMessage(true);
-    setTimeout(() => setShowCopyMessage(false), TIME_TO_SHOW);
+    copyAndShowMessage(copiedLink);
   };
 
   const handleFilter = (filterType) => {
