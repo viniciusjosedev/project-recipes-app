@@ -1,48 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
+
 .divSearchBar {
+  align-items: center;
   background-color: rgb(65, 25, 127);
+  border: 50px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 338px;
   margin-top: -5px;
-  border: 50px;
+  width: 338px;
   z-index: 0;
-  border-radius: 5px;
 }
+
 .divSearchBar .divRadioButtons {
   color: white;
   font-size: 10px;
 }
+
 .divSearchBar .divRadioButtons label {
+  margin-bottom: 11px;
   margin-right: 20px;
   margin-top: 19px;
-  margin-bottom: 11px;
 }
+
 .divSearchBar .divRadioButtons label input {
-  width: 10px;
-  height: 10px;
-  vertical-align: middle;
-  margin-right: 5px;
   border-radius: 5px;
+  height: 10px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 10px;
 }
+
 .divSearchBar button {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-family: "Epilogue", sans-serif;
+  background: #fcc436;
   border: none;
-  width: 208.16px;
-  height: 25px;
-  background: #FCC436;
   border-radius: 5px;
   color: white;
-  margin-bottom: 8px;
+  display: flex;
+  font-family: Epilogue , sans-serif;
+  font-size: 12px;
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 12px;
+  height: 25px;
+  justify-content: center;
   letter-spacing: 0.03em;
+  line-height: 12px;
+  margin-bottom: 8px;
   text-transform: uppercase;
+  width: 208.16px;
 }

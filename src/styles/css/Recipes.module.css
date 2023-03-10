@@ -1,40 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
+
 img {
   width: 100px;
 }
 
 .sectionCategores {
-  display: flex;
-  width: 100%;
   align-items: center;
-  justify-content: space-around;
+  display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
 }
+
 .sectionCategores button {
-  font-family: "Epilogue", sans-serif;
-  border: none;
-  gap: 2px;
+  align-items: center;
   background: transparent;
+  border: none;
   display: flex;
   flex-flow: column wrap;
-  align-items: center;
+  font-family: Epilogue , sans-serif;
+  gap: 2px;
 }
+
 .sectionCategores button img {
   width: 45px;
 }
+
 .sectionCategores button p {
-  justify-content: center;
+  color: #797d86;
+  font-size: 9px;
   font-style: normal;
   font-weight: 300;
-  font-size: 9px;
+  justify-content: center;
   line-height: 9px;
-  color: #797D86;
 }
 
 .sectionRecipeCard {
+  align-items: center;
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
-  width: 97%;
   justify-content: space-around;
+  width: 97%;
 }
