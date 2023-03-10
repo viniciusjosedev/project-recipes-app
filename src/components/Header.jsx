@@ -8,6 +8,8 @@ import DefaultContext from '../context/DefaultContext';
 import styles from '../styles/css/Header.module.css';
 import homeRecipesApp from '../styles/images/homeRecipesApp.svg';
 import iconePrato from '../styles/images/iconePrato.svg';
+import iconeTaca from '../styles/images/iconeTaca.svg';
+import SearchBar from './SearchBar';
 
 function Header({ history: { location: { pathname } } }) {
   const [nameHeader, setNameHeader] = useState(['']);
@@ -41,16 +43,17 @@ function Header({ history: { location: { pathname } } }) {
         </div>
       </div>
       <div className={ styles.divTitleAndSearch }>
-        <img src={ pathname.split('/')[1] === 'meals' ? iconePrato : null } alt="" />
+        <img src={ pathname.split('/')[1] === 'meals' ? iconePrato : iconeTaca } alt="" />
         <h1 data-testid="page-title">{nameHeader[0]}</h1>
         { inputSearch && (
           <>
             <input
               type="text"
+              placeholder="Search"
               data-testid="search-input"
               onChange={ ({ target: { value } }) => setSearchWord(value) }
             />
-            <div />
+            <SearchBar />
           </>
         ) }
       </div>

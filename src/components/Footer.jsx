@@ -26,6 +26,7 @@ function Footer() {
       >
         <img
           data-testid="meals-bottom-btn"
+          className={ styles.meals }
           src={ mealIcon }
           alt="button search recipes meal"
         />

@@ -13,6 +13,7 @@
 			background: #FCDC36;
 			justify-content: space-around;
 			align-items: center;
+			// margin-bottom: 50px;
 			.imageHomeRecipeApp {
 				// margin-left: 26px;
 				width: 172.5px;
@@ -52,6 +53,7 @@
 				margin-bottom: 13.67px
 			}
 			h1 {
+				margin-bottom: 15px;
 				@include fontEpilogue;
 				font-style: normal;
 				font-weight: 900;
@@ -62,12 +64,25 @@
 				letter-spacing: 0.105em;
 				text-transform: uppercase;
 			}
-			div {
-				background-color: red;
+			input {
+				width: 338px;
+				height: 40px;
+				border: 5px;
+				padding-left: 17.38px;
+				padding-top: 13px;
+				padding-bottom: 13px;
+				border-radius: 5px;
+				z-index: 1;
+				border: 1px solid rgba(177, 177, 177, 1);
+				// margin-bottom: 5px;
+				&::placeholder {
+					font-style: normal;
+					font-weight: 300;
+					font-size: 14px;
+					line-height: 14px;
+					color: #797D86;
+				}
 			}
 		}
 	}
 }
-
-
-

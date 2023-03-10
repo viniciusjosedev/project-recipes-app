@@ -1,72 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
-
-@media ( min-width : 0 ) {
-
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@media (min-width: 0px) {
   .header {
     background-color: white;
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-
   .header .divHeader {
-    align-items: center;
-    background: #fcdc36;
     display: flex;
-    justify-content: space-around;
     width: 100%;
+    background: #FCDC36;
+    justify-content: space-around;
+    align-items: center;
   }
-
   .header .divHeader .imageHomeRecipeApp {
-    height: 39.28px;
-    margin-bottom: 6px;
-    margin-top: 6px;
     width: 172.5px;
+    height: 39.28px;
+    margin-top: 6px;
+    margin-bottom: 6px;
   }
-
-  .divHeader div button {
-    background: transparent;
+  .header .divHeader div button {
     border: none;
+    background: transparent;
     margin-right: 16.15px;
   }
-
-  .divHeader div button img {
-    height: 26.85px;
+  .header .divHeader div button img {
     width: 26.85px;
+    height: 26.85px;
   }
-
-  .divHeader div a img {
-    height: 28.71px;
+  .header .divHeader div a img {
     width: 28.71px;
+    height: 28.71px;
   }
-
   .header .divTitleAndSearch {
-    align-items: center;
     display: flex;
     flex-direction: column;
-    margin-bottom: 24px;
+    align-items: center;
     margin-top: 31px;
+    margin-bottom: 24px;
   }
-
   .header .divTitleAndSearch img {
+    width: 40.33px;
     height: 29.33px;
     margin-bottom: 13.67px;
-    width: 40.33px;
   }
-
   .header .divTitleAndSearch h1 {
-    color: #41197f;
-    font-family: Epilogue , sans-serif;
-    font-size: 20px;
+    margin-bottom: 15px;
+    font-family: "Epilogue", sans-serif;
     font-style: normal;
     font-weight: 900;
-    letter-spacing: 0.105em;
+    font-size: 20px;
     line-height: 20px;
-    text-transform: uppercase;
+    color: #41197F;
     width: auto;
+    letter-spacing: 0.105em;
+    text-transform: uppercase;
   }
-
-  .header .divTitleAndSearch div {
-    background-color: red;
+  .header .divTitleAndSearch input {
+    width: 338px;
+    height: 40px;
+    border: 5px;
+    padding-left: 17.38px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border-radius: 5px;
+    z-index: 1;
+    border: 1px solid rgb(177, 177, 177);
+  }
+  .header .divTitleAndSearch input::placeholder {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 14px;
+    color: #797D86;
   }
 }

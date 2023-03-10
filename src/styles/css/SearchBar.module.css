@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+.divSearchBar {
+  background-color: rgb(65, 25, 127);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 338px;
+  margin-top: -5px;
+  border: 50px;
+  z-index: 0;
+  border-radius: 5px;
+}
+.divSearchBar .divRadioButtons {
+  color: white;
+  font-size: 10px;
+}
+.divSearchBar .divRadioButtons label {
+  margin-right: 20px;
+  margin-top: 19px;
+  margin-bottom: 11px;
+}
+.divSearchBar .divRadioButtons label input {
+  width: 10px;
+  height: 10px;
+  vertical-align: middle;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+.divSearchBar button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Epilogue", sans-serif;
+  border: none;
+  width: 208.16px;
+  height: 25px;
+  background: #FCC436;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 8px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}

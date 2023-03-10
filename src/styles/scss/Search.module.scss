@@ -4,29 +4,9 @@
 @include response(m) {
 	.main {
 		display: flex;
-		flex-flow: column wrap;
 		width: 100%;
-		img {
-			width: 100px;
-		}
-		section {
-			display: flex;
-			flex-flow: column wrap;
-			width: 100%;
-			a {
-				p {
-					width: 200px;
-					background-color: red;
-				}
-			}
-			h1 {
-				background-color: red;
-				width: 200px;
-			}
-			button {
-				background-color: red;
-				width: 50%;
-			}
-		}
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
 }

@@ -1,14 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
-
-@media ( min-width : 0 ) {
-
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@media (min-width: 0px) {
   .footer {
-    background-color: #333;
-    bottom: 0;
-    color: white;
     display: flex;
     justify-content: center;
+    background-color: #41197F;
+    bottom: 0;
+    color: white;
     position: fixed;
     width: 100%;
+    justify-content: space-between;
+  }
+  .footer button {
+    border: none;
+    background: transparent;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .footer button img {
+    width: 35px;
+    height: 35px;
+  }
+  .footer button img.meals {
+    width: 45px;
+    height: 45px;
   }
 }

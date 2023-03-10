@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styles from '../styles/css/RecipeCard.module.css';
 
 function RecipeCard({ cardData: { recipe, index, pathname } }) {
   const category = pathname
@@ -14,17 +15,18 @@ function RecipeCard({ cardData: { recipe, index, pathname } }) {
     <Link
       to={ `/${pathname.split('/')[1]
         .toLocaleLowerCase()}/${recipe[`id${category}`]}` }
+      data-testid={ `${index}-recipe-card` }
+      key={ index }
+      className={ styles.divCard }
     >
-      <div data-testid={ `${index}-recipe-card` } key={ index }>
-        <img
-          src={ recipe[propretyNames.thumb] }
-          alt={ recipe[propretyNames.name] }
-          data-testid={ `${index}-card-img` }
-        />
-        <p data-testid={ `${index}-card-name` }>
-          { recipe[propretyNames.name] }
-        </p>
-      </div>
+      <img
+        src={ recipe[propretyNames.thumb] }
+        alt={ recipe[propretyNames.name] }
+        data-testid={ `${index}-card-img` }
+      />
+      <p data-testid={ `${index}-card-name` }>
+        { recipe[propretyNames.name] }
+      </p>
     </Link>
   );
 }

@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+.divCard {
+  font-family: "Epilogue", sans-serif;
+  background-color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+  border: 1px solid #B1B1B1;
+  border-radius: 5px;
+}
+.divCard img {
+  width: 163px;
+  height: 135px;
+  border-radius: 5px;
+}
+.divCard p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 150px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  color: #1A1B1C;
+  padding-left: 10px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
