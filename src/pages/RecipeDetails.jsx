@@ -151,18 +151,17 @@ function RecipeDetails() {
       <div className={ style.divSeparation }>
         <p />
       </div>
-      <footer className={ style.footer }>
-        {disabledButton && (
-          <button
-            data-testid="start-recipe-btn"
-            type="button"
-            className={ style.buttonStartRecipe }
-            onClick={ () => history.push(`${pathname}/in-progress`) }
-          >
-            {optionButton === 'start' ? 'Start Recipes' : 'Continue Recipes'}
-          </button>
-        )}
-      </footer>
+      {disabledButton && (
+        <button
+          data-testid="start-recipe-btn"
+          type="button"
+          className={ style.buttonStartRecipe }
+          onClick={ () => history.push(`${pathname}/in-progress`) }
+        >
+          {optionButton === 'start' ? 'Start Recipes' : 'Continue Recipes'}
+        </button>
+      )}
+
     </>
   );
 }
