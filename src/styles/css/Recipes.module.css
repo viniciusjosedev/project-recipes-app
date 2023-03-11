@@ -1,44 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap');
 
-img {
-  width: 100px;
-}
+@media ( min-width : 0 ) {
 
-.sectionCategores {
-  align-items: center;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  width: 100%;
-}
+  .sectionCategores {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
 
-.sectionCategores button {
-  align-items: center;
-  background: transparent;
-  border: none;
-  display: flex;
-  flex-flow: column wrap;
-  font-family: Epilogue , sans-serif;
-  gap: 2px;
-}
+  .sectionCategores button {
+    align-items: center;
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-flow: column wrap;
+    font-family: Epilogue , sans-serif;
+    gap: 2px;
+  }
 
-.sectionCategores button img {
-  width: 45px;
-}
+  .sectionCategores button img {
+    width: 45px;
+  }
 
-.sectionCategores button p {
-  color: #797d86;
-  font-size: 9px;
-  font-style: normal;
-  font-weight: 300;
-  justify-content: center;
-  line-height: 9px;
-}
+  .sectionCategores button p {
+    color: #797d86;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 300;
+    justify-content: center;
+    line-height: 9px;
+  }
 
-.sectionRecipeCard {
-  align-items: center;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  width: 97%;
+  .sectionRecipeCard {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 97%;
+  }
 }

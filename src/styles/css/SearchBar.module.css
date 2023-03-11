@@ -1,53 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap');
 
-.divSearchBar {
-  align-items: center;
-  background-color: rgb(65, 25, 127);
-  border: 50px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: -5px;
-  width: 338px;
-  z-index: 0;
-}
+@media ( min-width : 0 ) {
 
-.divSearchBar .divRadioButtons {
-  color: white;
-  font-size: 10px;
-}
+  .divSearchBar {
+    align-items: center;
+    background-color: rgb(65, 25, 127);
+    border: 50px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -5px;
+    width: 338px;
+    z-index: 0;
+  }
 
-.divSearchBar .divRadioButtons label {
-  margin-bottom: 11px;
-  margin-right: 20px;
-  margin-top: 19px;
-}
+  .divSearchBar .divRadioButtons {
+    color: white;
+    font-size: 10px;
+  }
 
-.divSearchBar .divRadioButtons label input {
-  border-radius: 5px;
-  height: 10px;
-  margin-right: 5px;
-  vertical-align: middle;
-  width: 10px;
-}
+  .divSearchBar .divRadioButtons label {
+    margin-bottom: 11px;
+    margin-right: 20px;
+    margin-top: 19px;
+  }
 
-.divSearchBar button {
-  align-items: center;
-  background: #fcc436;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  display: flex;
-  font-family: Epilogue , sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 700;
-  height: 25px;
-  justify-content: center;
-  letter-spacing: 0.03em;
-  line-height: 12px;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  width: 208.16px;
+  .divSearchBar .divRadioButtons label input {
+    border-radius: 5px;
+    height: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 10px;
+  }
+
+  .divSearchBar button {
+    align-items: center;
+    background: #fcc436;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    font-family: Epilogue , sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    height: 25px;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    line-height: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    width: 208.16px;
+  }
 }

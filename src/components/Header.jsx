@@ -27,7 +27,13 @@ function Header({ history: { location: { pathname } } }) {
   return (
     <header className={ styles.header }>
       <div className={ styles.divHeader }>
-        <img className={ styles.imageHomeRecipeApp } src={ homeRecipesApp } alt="" />
+        <Link to="/meals">
+          <img
+            className={ styles.imageHomeRecipeApp }
+            src={ homeRecipesApp }
+            alt="logo Home"
+          />
+        </Link>
         <div>
           { nameHeader[1] && (
             <button

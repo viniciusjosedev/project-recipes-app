@@ -1,47 +1,46 @@
 @import '_fonts.scss';
+@import '_responsividade.scss';
 
-img {
-	width: 100px;
-}
-
-.sectionCategores {
-	display: flex;
-	width: 100%;
-	// background-color: red;
-	align-items: center;
-	// gap: 1px;
-	justify-content:space-around;
-	flex-flow: row wrap;
-	button {
-		@include fontEpilogue;
-		// background-color: blue;
-		border: none;
-		gap: 2px;
-		background: transparent;	
+@include response(m) {
+	.sectionCategores {
 		display: flex;
-		flex-flow: column wrap;
+		width: 100%;
+		// background-color: red;
 		align-items: center;
-		img {
-			width: 45px;
-		}
-		p {
-			justify-content: center;
-			font-style: normal;
-			font-weight: 300;
-			font-size: 9px;
-			line-height: 9px;
-			color: #797D86;
-			// width: 100%;
-			// background-color: red;
+		// gap: 1px;
+		justify-content:space-around;
+		flex-flow: row wrap;
+		button {
+			@include fontEpilogue;
+			// background-color: blue;
+			border: none;
+			gap: 2px;
+			background: transparent;	
+			display: flex;
+			flex-flow: column wrap;
+			align-items: center;
+			img {
+				width: 45px;
+			}
+			p {
+				justify-content: center;
+				font-style: normal;
+				font-weight: 300;
+				font-size: 9px;
+				line-height: 9px;
+				color: #797D86;
+				// width: 100%;
+				// background-color: red;
+			}
 		}
 	}
-}
 
-.sectionRecipeCard {
-	display: flex;
-	flex-flow: row wrap;
-	// background-color: red;
-	align-items: center;
-	width: 97%;
-	justify-content: space-around;
+	.sectionRecipeCard {
+		display: flex;
+		flex-flow: row wrap;
+		// background-color: red;
+		align-items: center;
+		width: 97%;
+		justify-content: space-around;
+	}
 }

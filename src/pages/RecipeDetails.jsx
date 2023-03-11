@@ -3,22 +3,17 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { fetchDetails } from '../services/foodAndDrink';
 import { getIngredients, getRecomendations } from '../helpers/ingredients';
 import style from '../styles/css/RecipeDetails.module.css';
-import { addFavoriteRecipes,
-  removeFavoriteRecipes } from '../helpers/setLocalStorage';
-import whiteHeartIcon from '../styles/images/whiteHeartIcon.svg';
-import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
 import DefaultContext from '../context/DefaultContext';
 import useCopy from '../context/customHooks/useCopy';
+import HeaderRecipesDetails from '../components/HeaderRecipesDetails';
 
 function RecipeDetails() {
-  // console.log(match);
   const { details, setDetails } = useContext(DefaultContext);
   const { pathname } = useLocation();
   const [ingredients, setIngredients] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [disabledButton, setDisabledButton] = useState(true);
   const [optionButton, setOptionButton] = useState();
-  // const [textCopied, setTextCopied] = useState(false);
   const [showCopyMessage, copyAndShowMessage] = useCopy();
   const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const history = useHistory();
@@ -67,26 +62,32 @@ function RecipeDetails() {
   return (
     <>
       <main className={ style.main }>
+        <div className={ style.divInfoHeaderDetails }>
+          <HeaderRecipesDetails
+            favoriteRecipe={ favoriteRecipe }
+            copyAndShowMessage={ copyAndShowMessage }
+            details={ details }
+            category={ category }
+            type={ type }
+            id={ id }
+            handleIcon={ handleIcon }
+          />
+        </div>
+        <div className={ style.divTitleHeader }>
+          <h2 data-testid="recipe-title">{details[`str${type}`]}</h2>
+        </div>
         <img
           data-testid="recipe-photo"
           src={ details[`str${type}Thumb`] }
           alt="imagem da receita"
+          className={ style.imgBackGroundHeader }
         />
-        <h2 data-testid="recipe-title">{details[`str${type}`]}</h2>
         { showCopyMessage && (
           <p>
             Link copied!
           </p>
         ) }
-        {
-          category === 'drinks'
-            ? (
-              <h4 data-testid="recipe-category">
-                {`${details.strCategory} - ${details.strAlcoholic}`}
-              </h4>
-            ) : (<h4 data-testid="recipe-category">{ details.strCategory }</h4>)
-        }
-        <p>Ingredientes</p>
+        <p className={ style.pIngredientes }>Ingredients</p>
         <ul>
           {
             ingredients.map((ingredient, index) => (
@@ -99,22 +100,33 @@ function RecipeDetails() {
             ))
           }
         </ul>
-        <p data-testid="instructions">{details.strInstructions}</p>
+        <p className={ style.pIngredientes }>Instructions</p>
+        <p
+          className={ style.pInstructions }
+          data-testid="instructions"
+        >
+          {details.strInstructions}
+
+        </p>
         {
           category === 'meals' && (
-            <iframe
-              data-testid="video"
-              width="560"
-              height="315"
-              src={ Object.keys(details).length > 0
+            <>
+              <p className={ style.pIngredientes }>Video</p>
+              <iframe
+                data-testid="video"
+                width="336px"
+                height="205.09px"
+                src={ Object.keys(details).length > 0
                 && `https://www.youtube.com/embed/${details.strYoutube.split('=')[1]}` }
-              title="YouTube video player"
-              allow="accelerometer; autoplay;
+                title="YouTube video player"
+                allow="accelerometer; autoplay;
               clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            />
+                allowfullscreen
+              />
+            </>
           )
         }
+        <p className={ style.pIngredientes }>Recommended</p>
         <div
           className={ style.divRecomendationCard }
         >
@@ -135,32 +147,11 @@ function RecipeDetails() {
             </div>
           ))}
         </div>
-        <button
-          type="button"
-          onClick={ () => {
-            copyAndShowMessage(window.location.href);
-          } }
-          data-testid="share-btn"
-        >
-          Compartilhar
-        </button>
-        <button
-          type="button"
-          onClick={ () => {
-            if (favoriteRecipe) {
-              removeFavoriteRecipes(id);
-            } else {
-              addFavoriteRecipes(type, details);
-            }
-            handleIcon();
-          } }
-        >
-          <img
-            data-testid="favorite-btn"
-            src={ favoriteRecipe ? blackHeartIcon : whiteHeartIcon }
-            alt=""
-          />
-        </button>
+      </main>
+      <div className={ style.divSeparation }>
+        <p />
+      </div>
+      <footer className={ style.footer }>
         {disabledButton && (
           <button
             data-testid="start-recipe-btn"
@@ -171,8 +162,7 @@ function RecipeDetails() {
             {optionButton === 'start' ? 'Start Recipes' : 'Continue Recipes'}
           </button>
         )}
-      </main>
-      <footer className={ style.footer } />
+      </footer>
     </>
   );
 }

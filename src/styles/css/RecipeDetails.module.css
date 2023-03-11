@@ -1,40 +1,178 @@
-.main {
-  background-color: red;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
 
-.main .divRecomendationCard {
-  background-color: black;
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  width: 210px;
-}
+@media ( min-width : 0 ) {
 
-.main .divRecomendationCard div {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  width: 110px;
-}
+  .main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10%;
+    width: 100%;
+  }
 
-.main .divRecomendationCard div img {
-  width: 100px;
-}
+  .main .divInfoHeaderDetails {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    z-index: 1;
+  }
 
-.main .buttonStartRecipe {
-  bottom: 0;
-  position: fixed;
-}
+  .main .divInfoHeaderDetails div {
+    align-items: center;
+    display: flex;
+    gap: 19px;
+    justify-content: center;
+    margin-left: 19px;
+    margin-right: 19px;
+  }
 
-.footer {
-  background-color: blue;
-}
+  .main .divInfoHeaderDetails div button {
+    background: transparent;
+    border: none;
+  }
 
-.footer button {
-  height: 50px;
-  width: 50px;
+  .main .divInfoHeaderDetails div img {
+    height: 33px;
+    width: 33px;
+  }
+
+  .main .divInfoHeaderDetails div h4 {
+    color: #fcc436;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 12px;
+    margin-top: 6px;
+    vertical-align: middle;
+  }
+
+  .main .divTitleHeader {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+  }
+
+  .main .divTitleHeader h2 {
+    color: white;
+    font-family: Epilogue , sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.105em;
+    line-height: 20px;
+    margin: 0;
+    margin-left: -35px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: 50%;
+    z-index: 1;
+  }
+
+  .main .imgBackGroundHeader {
+    filter: brightness(50%);
+    height: 162px;
+    width: 100%;
+  }
+
+  .main .pIngredientes {
+    color: #1a1b1c;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    margin-top: 35px;
+    width: 90%;
+  }
+
+  .main ul {
+    background: white;
+    border: 0.554px solid #b1b1b1;
+    border-radius: 5.351px;
+    width: 95%;
+  }
+
+  .main ul li {
+    width: auto;
+  }
+
+  .main .pInstructions {
+    background: white;
+    background-color: red;
+    border: 0.554px solid #b1b1b1;
+    border-radius: 5.351px;
+    padding: 19px;
+    text-align: justify;
+    width: 95%;
+  }
+
+  .main .divRecomendationCard {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 324px;
+  }
+
+  .main .divRecomendationCard div {
+    align-items: center;
+    border: 1px solid rgb(177, 177, 177);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-left: 2px;
+    margin-right: 2px;
+    scroll-snap-align: start;
+  }
+
+  .main .divRecomendationCard div img {
+    width: 163.33px;
+  }
+
+  .main .divRecomendationCard div h4 {
+    color: #1a1b1c;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+  }
+
+  .divSeparation {
+    display: flex;
+    height: 200px;
+    width: 100%;
+  }
+
+  .footer {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+  }
+
+  .footer .buttonStartRecipe {
+    background: #fcc436;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: 40px;
+    letter-spacing: 0.03em;
+    line-height: 14px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 336px;
+  }
 }

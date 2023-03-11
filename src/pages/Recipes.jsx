@@ -5,13 +5,8 @@ import DefaultContext from '../context/DefaultContext';
 import RecipeCard from '../components/RecipeCard';
 import fetchRecipesAndCategoresInitial, { fetchCategores }
   from '../services/foodAndDrink';
+import funcGetImage from '../helpers/funcGetImage';
 import styles from '../styles/css/Recipes.module.css';
-import All from '../styles/images/All.svg';
-import Cocoa from '../styles/images/cocoa.svg';
-import Cocktail from '../styles/images/cocktail.svg';
-import Other from '../styles/images/other.svg';
-import Shake from '../styles/images/shake.svg';
-import Drink from '../styles/images/drink.svg';
 
 function Recipes() {
   const { searchedRecipes, searcheCategories,
@@ -22,14 +17,13 @@ function Recipes() {
   const [loading, setLoading] = useState(true);
   const { pathname } = useLocation();
   const history = useHistory();
-  const arrayImages = [Drink, Cocktail, Shake, Other, Cocoa];
+  const category = pathname
+    .split('/')[1] === 'drinks' ? 'Drink' : 'Meal';
 
   const RECIPES_TO_RENDER = 12;
   const CATEGORY_TO_RENDER = 5;
 
   useMemo(() => {
-    const category = pathname
-      .split('/')[1] === 'drinks' ? 'Drink' : 'Meal';
     if (searchedRecipes[0].length > 1) {
       setRenderRecipes(searchedRecipes[0].slice(0, RECIPES_TO_RENDER));
       setRenderCategories(searcheCategories.slice(0, searcheCategories.length
@@ -41,7 +35,7 @@ function Recipes() {
     } else {
       setRenderRecipes(searchedRecipes[0]);
     }
-  }, [history, pathname, searcheCategories, searchedRecipes]);
+  }, [history, pathname, searcheCategories, searchedRecipes, category]);
 
   const fetchInitialRecipes = async () => {
     setLoading(true);
@@ -82,23 +76,30 @@ function Recipes() {
           type="button"
           onClick={ fetchInitialRecipes }
         >
-          <img src={ All } alt="" />
+          <img
+            src={ category === 'Drink'
+              ? funcGetImage('AllDrinks') : funcGetImage('AllMeals') }
+            alt=""
+          />
           <p>All</p>
         </button>
-        {searcheCategories && renderCategories.map((e, index) => (
+        {searcheCategories && renderCategories.map((e) => (
           <button
             key={ e.strCategory }
             data-testid={ `${e.strCategory}-category-filter` }
             onClick={ () => handleClick(e.strCategory) }
           >
-            <img src={ arrayImages[index] } alt="" />
+            <img
+              src={ funcGetImage(e.strCategory) }
+              alt=""
+            />
             <p>{e.strCategory}</p>
           </button>
         ))}
       </section>
       <section className={ styles.sectionRecipeCard }>
         {loading && (
-          <Spinner color="success" />
+          <Spinner style={ { color: '#E44343', marginTop: '50px' } } />
         )}
         {
           renderRecipes && !loading && (
