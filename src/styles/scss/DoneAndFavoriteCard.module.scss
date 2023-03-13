@@ -23,6 +23,7 @@
 			justify-content: space-around;
 			.divInfoLateralHeader {
 				display: flex;
+				width: 150px;
 				justify-content: space-around;
 				align-items: center;
 				// background-color: blue;
@@ -34,6 +35,9 @@
 					font-size: 20px;
 					line-height: 12px;
 					color: #1A1B1C;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
 				}
 				button {
 					border: none;
@@ -80,9 +84,6 @@
 				background-color: #D9D9D9;
 				border-radius: 10px;
 			}
-		}
-		.divSpace {
-			
 		}
 	}
 }

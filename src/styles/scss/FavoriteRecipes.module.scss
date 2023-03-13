@@ -1,0 +1,47 @@
+@import '_fonts';
+@import '_responsividade';
+
+@include response(m) {
+	.main {
+		// background-color: red;
+		display: flex;
+		width: 100%;
+		flex-flow: column wrap;
+		align-items: center;
+		justify-content: center;
+		.divButtons {
+			display: flex;
+			justify-content: space-around;
+			// background-color: blue;
+			width: 100%;
+			button {
+				@include fontEpilogue();
+				border: none;
+				background: transparent;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				font-style: normal;
+				font-weight: 300;
+				font-size: 10px;
+				line-height: 9px;
+				text-align: center;
+				color: #797D86;
+				gap: 7px;
+				img {
+					width: 66.72px;
+					height: 66.72px;
+				}
+			}
+			margin-bottom: 35px;
+		}
+		section {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			width: 100%;
+			align-items: center;
+		}
+	}
+}
