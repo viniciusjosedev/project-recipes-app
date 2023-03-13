@@ -106,7 +106,8 @@
 
   .main .pInstructions {
     background: white;
-    background-color: red;
+
+    /* background-color: red; */
     border: 0.554px solid #b1b1b1;
     border-radius: 5.351px;
     padding: 19px;
