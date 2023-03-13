@@ -30,8 +30,6 @@ export const removeFavoriteRecipes = (id) => {
 
 export const addProgressInRecipes = (ingredientes, category, id) => {
   if (JSON.parse(localStorage.getItem('inProgressRecipes')) !== null) {
-    console.log(JSON.parse(localStorage
-      .getItem('inProgressRecipes'))[category][id] !== undefined);
     const arrayID = JSON.parse(localStorage
       .getItem('inProgressRecipes'))[category][id] !== undefined
       ? [...JSON.parse(localStorage
@@ -51,7 +49,6 @@ export const addProgressInRecipes = (ingredientes, category, id) => {
 };
 
 export const removeProgressInRecipes = (ingredientes, category, id) => {
-  console.log(ingredientes);
   localStorage.setItem(
     'inProgressRecipes',
     JSON.stringify({ ...JSON.parse(localStorage.getItem('inProgressRecipes')),

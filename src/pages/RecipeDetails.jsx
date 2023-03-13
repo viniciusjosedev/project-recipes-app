@@ -106,7 +106,6 @@ function RecipeDetails() {
           data-testid="instructions"
         >
           {details.strInstructions}
-
         </p>
         {
           category === 'meals' && (
@@ -161,7 +160,6 @@ function RecipeDetails() {
           {optionButton === 'start' ? 'Start Recipes' : 'Continue Recipes'}
         </button>
       )}
-
     </>
   );
 }

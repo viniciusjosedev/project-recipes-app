@@ -1,181 +1,155 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap') ;
-
-@media ( min-width : 0 ) {
-
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@media (min-width: 0px) {
   .main {
-    align-items: center;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 10%;
-    width: 100%;
+    margin-bottom: 20%;
   }
-
   .main .divInfoHeaderDetails {
+    z-index: 1;
     display: flex;
+    width: 100%;
     justify-content: space-between;
     position: absolute;
     top: 20px;
-    width: 100%;
-    z-index: 1;
   }
-
   .main .divInfoHeaderDetails div {
-    align-items: center;
-    display: flex;
-    gap: 19px;
-    justify-content: center;
     margin-left: 19px;
     margin-right: 19px;
+    display: flex;
+    gap: 19px;
+    align-items: center;
+    justify-content: center;
   }
-
   .main .divInfoHeaderDetails div button {
-    background: transparent;
     border: none;
+    background: transparent;
   }
-
   .main .divInfoHeaderDetails div img {
-    height: 33px;
     width: 33px;
+    height: 33px;
   }
-
   .main .divInfoHeaderDetails div h4 {
-    color: #fcc436;
-    font-size: 14px;
     font-style: normal;
     font-weight: 700;
+    font-size: 14px;
     line-height: 12px;
+    color: #FCC436;
     margin-top: 6px;
     vertical-align: middle;
   }
-
   .main .divTitleHeader {
-    background-color: red;
-    display: flex;
-    justify-content: center;
     position: absolute;
     top: 10%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: red;
   }
-
   .main .divTitleHeader h2 {
-    color: white;
-    font-family: Epilogue , sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    letter-spacing: 0.105em;
-    line-height: 20px;
-    margin: 0;
-    margin-left: -35px;
-    overflow: hidden;
-    text-align: center;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
-    width: 50%;
     z-index: 1;
-  }
-
-  .main .imgBackGroundHeader {
-    filter: brightness(50%);
-    height: 162px;
-    width: 100%;
-  }
-
-  .main .pIngredientes {
-    color: #1a1b1c;
-    font-size: 20px;
+    font-family: "Epilogue", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    margin: 0px;
+    width: 50%;
+    margin-left: -35px;
+    text-align: center;
     font-style: normal;
     font-weight: 700;
+    font-size: 20px;
     line-height: 20px;
-    margin-top: 35px;
-    width: 90%;
+    text-align: center;
+    letter-spacing: 0.105em;
+    text-transform: uppercase;
   }
-
+  .main .imgBackGroundHeader {
+    width: 100%;
+    height: 162px;
+    filter: brightness(50%);
+  }
+  .main .pIngredientes {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    color: #1A1B1C;
+    width: 90%;
+    margin-top: 35px;
+  }
   .main ul {
-    background: white;
-    border: 0.554px solid #b1b1b1;
-    border-radius: 5.351px;
+    background: #FFFFFF;
+    border: 0.554397px solid #B1B1B1;
+    border-radius: 5.35144px;
     width: 95%;
   }
-
   .main ul li {
     width: auto;
   }
-
   .main .pInstructions {
-    background: white;
-
-    /* background-color: red; */
-    border: 0.554px solid #b1b1b1;
-    border-radius: 5.351px;
-    padding: 19px;
-    text-align: justify;
+    background-color: red;
     width: 95%;
+    text-align: justify;
+    background: #FFFFFF;
+    border: 0.554397px solid #B1B1B1;
+    border-radius: 5.35144px;
+    padding: 19px;
   }
-
   .main .divRecomendationCard {
-    display: flex;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
     width: 324px;
+    overflow-x: scroll;
+    display: flex;
+    scroll-snap-type: x mandatory;
   }
-
   .main .divRecomendationCard div {
-    align-items: center;
-    border: 1px solid rgb(177, 177, 177);
     display: flex;
     flex-direction: column;
+    scroll-snap-align: start;
     flex-shrink: 0;
+    align-items: center;
     margin-left: 2px;
     margin-right: 2px;
-    scroll-snap-align: start;
+    border: 1px solid rgb(177, 177, 177);
   }
-
   .main .divRecomendationCard div img {
     width: 163.33px;
   }
-
   .main .divRecomendationCard div h4 {
-    color: #1a1b1c;
-    font-size: 18px;
     font-style: normal;
     font-weight: 400;
+    font-size: 18px;
     line-height: 12px;
+    color: #1A1B1C;
   }
-
   .divSeparation {
-
-    /* background-color: red; */
     display: flex;
-
-    /* height: 300px; */
-
-    /* width: 100px; */
-    margin-top: 50px;
+    width: 100%;
+    height: 300px;
   }
-
-
   .buttonStartRecipe {
-    background: #fcc436;
+    position: fixed;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: none;
-    border-radius: 5px;
+    width: 336px;
     bottom: 0;
-    color: white;
-    font-size: 14px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 40px;
+    background: #FCC436;
+    border-radius: 5px;
     font-style: normal;
     font-weight: 700;
-    height: 40px;
-    left: 50%;
-    letter-spacing: 0.03em;
+    font-size: 14px;
     line-height: 14px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    position: fixed;
     text-align: center;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
-    transform: translate(-50%, -50%);
-    width: 336px;
+    color: #FFFFFF;
   }
 }

@@ -28,7 +28,12 @@ export default function HeaderRecipesDetails({ favoriteRecipe,
         <button
           type="button"
           onClick={ () => {
-            copyAndShowMessage(window.location.href);
+            const IN_PROGRESS = 'in-progress';
+            copyAndShowMessage(window.location.href.includes(IN_PROGRESS)
+              ? window.location.href.split(IN_PROGRESS)[0].slice(
+                0,
+                window.location.href.split(IN_PROGRESS)[0].length - 1,
+              ) : window.location.href);
           } }
           data-testid="share-btn"
         >

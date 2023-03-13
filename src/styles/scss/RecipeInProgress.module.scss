@@ -1,3 +1,148 @@
-.checked {
-	text-decoration: line-through solid rgb(0, 0, 0)
+@import '_fonts.scss';
+@import '_responsividade.scss';
+
+@include response(m) {
+	.main {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		// background-color: black;
+		align-items: center;
+		justify-content: center;
+		.checked {
+			text-decoration: line-through solid rgb(0, 0, 0)
+		}
+		.divInfoHeaderDetails {
+			z-index: 1;
+			display: flex;
+			// background-color: blue;
+			width: 100%;
+			justify-content: space-between;
+			position: absolute;
+			top: 20px;
+			div {
+				margin-left: 19px;
+				margin-right: 19px;
+				display: flex;
+				gap: 19px;
+				align-items: center;
+				justify-content: center;
+				button {
+					border: none;
+					background: transparent;
+
+				}
+				img {
+					width: 33px;
+					height: 33px;
+				}
+				h4 {
+					font-style: normal;
+					font-weight: 700;
+					font-size: 14px;
+					line-height: 12px;
+					color: #FCC436;
+					margin-top: 6px;
+					// background-color: black;
+					vertical-align: middle;
+				}
+			}
+		}
+		.divTitleHeader {
+			position: absolute;
+			top: 10%;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			background-color: red;
+			h2 {
+				z-index: 1;
+				@include fontEpilogue();
+				white-space: nowrap; 
+				overflow: hidden;
+				text-overflow: ellipsis;
+				color: white;
+				margin: 0px;
+				width: 50%;
+				margin-left: -35px;
+				text-align: center;
+				// right: 50%;
+				font-style: normal;
+				font-weight: 700;
+				font-size: 20px;
+				line-height: 20px;
+				text-align: center;
+				letter-spacing: 0.105em;
+				text-transform: uppercase;
+			}
+		}
+		.imgBackGroundHeader {
+			width: 100%;
+			height: 162px;
+			filter: brightness(50%)
+		}
+		.pIngredientes {
+			// background-color: red;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 20px;
+			line-height: 20px;
+			color: #1A1B1C;
+			// margin-left: 24px;
+			width: 90%;
+			margin-top: 35px;
+		}
+		ul {
+			display: flex;
+			flex-direction: column;
+			background: #FFFFFF;
+			border: 0.554397px solid #B1B1B1;
+			border-radius: 5.35144px;
+			width: 95%;
+			input {
+				margin-right: 10px;
+				margin-top: 2.5px;
+				margin-bottom: 2.5px;
+			}
+		}
+		.pInstructions {
+			background-color: red;
+			width: 95%;
+			text-align: justify;
+			background: #FFFFFF;
+			border: 0.554397px solid #B1B1B1;
+			border-radius: 5.35144px;
+			padding: 19px;
+		}
+		margin-bottom: 20%;
+  }
+
+	.divSeparation {
+		display: flex;
+		width: 100%;
+		height: 300px;
+		// background-color: red;
+	}
+
+	.buttonStartRecipe {
+		position: fixed;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border: none;
+		width: 336px;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		height: 40px;
+		background: #FCC436;
+		border-radius: 5px;
+		font-style: normal;
+		font-weight: 700;
+		font-size: 13px;
+		line-height: 14px;
+		text-align: center;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		color: #FFFFFF;
+	}
 }
