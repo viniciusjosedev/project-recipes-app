@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
-// import DoneRecipeCard from '../components/DoneRecipeCard';
 import useCopy from '../context/customHooks/useCopy';
 import DoneAndFavoriteCard from '../components/DoneAndFavoriteCard';
+import AllEat from '../styles/images/AllEat.svg';
+import All from '../styles/images/All.svg';
+import AllMeals from '../styles/images/AllMeals.svg';
+import style from '../styles/css/DoneRecipes.module.css';
 
 function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState([]);
@@ -21,7 +24,7 @@ function DoneRecipes() {
   };
 
   const handleFilter = (filterType) => {
-    console.log(filterType);
+    // console.log(filterType);
     if (filterType === 'all') {
       setRenderRecipes(doneRecipes);
       return;
@@ -31,48 +34,54 @@ function DoneRecipes() {
   };
 
   return (
-    <div>
+    <main className={ style.main }>
+      <div className={ style.divButtons }>
+        <button
+          type="button"
+          data-testid="filter-by-all-btn"
+          onClick={ () => handleFilter('all') }
+        >
+          <img src={ AllEat } alt="" />
+          All
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-meal-btn"
+          name="meal"
+          onClick={ () => handleFilter('meal') }
+        >
+          <img src={ AllMeals } alt="" />
+          Meals
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-drink-btn"
+          name="drink"
+          onClick={ () => handleFilter('drink') }
+        >
+          <img src={ All } alt="" />
+          Drinks
+        </button>
+      </div>
       { showCopyMessage && (
         <p>
           Link copied!
         </p>
       ) }
-      <button
-        type="button"
-        data-testid="filter-by-all-btn"
-        value="all"
-        onClick={ ({ target: { value } }) => handleFilter(value) }
-      >
-        All
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-meal-btn"
-        value="meal"
-        onClick={ ({ target: { value } }) => handleFilter(value) }
-      >
-        Meals
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-drink-btn"
-        value="drink"
-        onClick={ ({ target: { value } }) => handleFilter(value) }
-      >
-        Drinks
-      </button>
-      {
-        renderRecipes.map((recipe, index) => (
-          <DoneAndFavoriteCard
-            key={ index }
-            { ...recipe }
-            index={ index }
-            handleShareClick={ handleShareClick }
-            cardType="doneRecipe"
-          />
-        ))
-      }
-    </div>
+      <section>
+        {
+          renderRecipes.map((recipe, index) => (
+            <DoneAndFavoriteCard
+              key={ index }
+              { ...recipe }
+              index={ index }
+              handleShareClick={ handleShareClick }
+              cardType="doneRecipe"
+            />
+          ))
+        }
+      </section>
+    </main>
   );
 }
 

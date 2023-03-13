@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@media (min-width: 0px) {
+  .divFavoriteAndCard {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 10px;
+    width: 90%;
+    border: 1px solid #B1B1B1;
+    border-radius: 2px;
+  }
+  .divFavoriteAndCard .recipeCardImg {
+    width: 163.35px;
+    height: 134.85px;
+  }
+  .divFavoriteAndCard .divInfoLateral {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .divFavoriteAndCard .divInfoLateral .divInfoLateralHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .divFavoriteAndCard .divInfoLateral .divInfoLateralHeader a {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 12px;
+    color: #1A1B1C;
+  }
+  .divFavoriteAndCard .divInfoLateral .divInfoLateralHeader button {
+    border: none;
+    background: transparent;
+  }
+  .divFavoriteAndCard .divInfoLateral .divInfoLateralHeader button img {
+    width: 22px;
+    height: 22px;
+  }
+  .divFavoriteAndCard .divInfoLateral .divCategoryInfo {
+    display: flex;
+    justify-content: center;
+  }
+  .divFavoriteAndCard .divInfoLateral .divCategoryInfo h3 {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 9px;
+    line-height: 9px;
+    text-align: center;
+    color: #797D86;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .divFavoriteAndCard p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 9px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #1A1B1C;
+    text-overflow: ellipsis;
+  }
+  .divFavoriteAndCard .divP {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+  }
+  .divFavoriteAndCard .divP p {
+    background-color: #D9D9D9;
+    border-radius: 10px;
+  }
+}

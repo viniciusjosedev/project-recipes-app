@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;1,500&display=swap");
+@media (min-width: 0px) {
+  .main {
+    display: flex;
+    width: 100%;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .main .divButtons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 35px;
+  }
+  .main .divButtons button {
+    font-family: "Epilogue", sans-serif;
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 9px;
+    text-align: center;
+    color: #797D86;
+    gap: 7px;
+  }
+  .main .divButtons button img {
+    width: 66.72px;
+    height: 66.72px;
+  }
+  .main section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+}
