@@ -27,33 +27,37 @@ function Login({ history: { push } }) {
 
   return (
     <main className={ styles.main }>
-      <img src={ backgroundImageLogin } alt="" />
+      <div>
+        <img src={ backgroundImageLogin } alt="" />
+      </div>
       <h1 className={ styles.h1Title }>Login</h1>
-      <input
-        type="email"
-        id="email"
-        className={ styles.inputEmail }
-        placeholder="Email"
-        data-testid="email-input"
-        onChange={ handleEmail }
-      />
-      <input
-        type="password"
-        className={ styles.inputEmail }
-        id="password"
-        data-testid="password-input"
-        placeholder="Digite a senha"
-        onChange={ handlePassword }
-      />
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ validation(email, password) }
-        onClick={ saveLocalStorage }
-        className={ styles.button }
-      >
-        Enter
-      </button>
+      <div className={ styles.divInputs }>
+        <input
+          type="email"
+          id="email"
+          className={ styles.inputEmail }
+          placeholder="Email"
+          data-testid="email-input"
+          onChange={ handleEmail }
+        />
+        <input
+          type="password"
+          className={ styles.inputEmail }
+          id="password"
+          data-testid="password-input"
+          placeholder="Digite a senha"
+          onChange={ handlePassword }
+        />
+        <button
+          type="button"
+          data-testid="login-submit-btn"
+          disabled={ validation(email, password) }
+          onClick={ saveLocalStorage }
+          className={ styles.button }
+        >
+          Enter
+        </button>
+      </div>
     </main>
   );
 }

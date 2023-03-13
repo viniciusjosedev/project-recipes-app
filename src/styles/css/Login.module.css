@@ -11,7 +11,14 @@
     width: 100%;
   }
 
-  .main img {
+  .main div {
+    display: flex;
+    width: 100%;
+  }
+
+  .main div img {
+
+    /* height: 400px; */
     width: 100%;
   }
 
@@ -24,6 +31,12 @@
     line-height: 20px;
     margin-bottom: 19px;
     text-transform: uppercase;
+  }
+
+  .divInputs {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
 
   .main .inputEmail {
