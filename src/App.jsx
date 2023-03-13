@@ -49,6 +49,7 @@ function App() {
           <>
             <Header { ...props } />
             <DoneRecipes />
+            <Footer />
           </>
         ) }
       />
@@ -59,6 +60,7 @@ function App() {
           <>
             <Header { ...props } />
             <FavoriteRecipes />
+            <Footer />
           </>
         ) }
       />

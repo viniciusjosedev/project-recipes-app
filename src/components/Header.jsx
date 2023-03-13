@@ -12,6 +12,7 @@ import iconeTaca from '../styles/images/iconeTaca.svg';
 import SearchBar from './SearchBar';
 import iconDoneRecipes from '../styles/images/iconDoneRecipes.svg';
 import iconFavorites from '../styles/images/iconFavorites.svg';
+import iconPerfil from '../styles/images/iconPerfil.svg';
 
 function Header({ history: { location: { pathname } } }) {
   const [nameHeader, setNameHeader] = useState(['']);
@@ -23,6 +24,7 @@ function Header({ history: { location: { pathname } } }) {
     if (path === 'meals') return iconePrato;
     if (path === 'drinks') return iconeTaca;
     if (path === 'favorite-recipes') return iconFavorites;
+    if (path === 'profile') return iconPerfil;
   };
 
   useEffect(() => {

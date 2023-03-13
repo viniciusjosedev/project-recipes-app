@@ -1,0 +1,48 @@
+@import 'responsividade';
+@import '_fonts';
+
+@include response(m) {
+	.main {
+		// background-color: red;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		h2 {
+			font-style: normal;
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 16px;
+			text-align: center;
+			color: #1A1B1C;
+			margin-bottom: 41px;
+		}
+		button {
+			// background-color: blue;
+			border: none;
+			display: flex;
+			background: transparent;
+			align-items: center;
+			// justify-content: spa;
+			width: 217.44px;
+			gap: 22px;
+			margin-bottom: 10px;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 16px;
+			display: flex;
+			align-items: center;
+			letter-spacing: 0.03em;
+			text-transform: capitalize;
+
+			color: #797D86;
+			img {
+				width: 38.69px;
+				height: 38.69px;
+			}
+		}
+		hr {
+			width: 250px;
+		}
+	}
+}
