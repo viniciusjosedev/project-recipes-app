@@ -5,7 +5,7 @@ import { addFavoriteRecipes,
 import whiteHeartIcon from '../styles/images/whiteHeartIcon.svg';
 import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
 import funcGetImage from '../helpers/funcGetImage';
-import iconShare from '../styles/images/iconShare.svg';
+import iconShare from '../styles/images/shareIcon.svg';
 
 export default function HeaderRecipesDetails({ favoriteRecipe,
   copyAndShowMessage, details, category, type, id, handleIcon }) {

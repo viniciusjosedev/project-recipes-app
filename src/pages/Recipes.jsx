@@ -27,7 +27,7 @@ function Recipes() {
     if (searchedRecipes[0].length > 1) {
       setRenderRecipes(searchedRecipes[0].slice(0, RECIPES_TO_RENDER));
       setRenderCategories(searcheCategories.slice(0, searcheCategories.length
-        > CATEGORY_TO_RENDER ? CATEGORY_TO_RENDER : searcheCategories.length));
+        > CATEGORY_TO_RENDER && CATEGORY_TO_RENDER));
     } else if (searchedRecipes[1] && searchedRecipes[0].length === 1) {
       const type = pathname.split('/')[1];
       const id = searchedRecipes[0][0][`id${category}`];

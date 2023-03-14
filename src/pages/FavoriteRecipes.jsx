@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import DoneAndFavoriteCard from '../components/DoneAndFavoriteCard';
 import { removeFavoriteRecipes } from '../helpers/setLocalStorage';
-import useCopy from '../context/customHooks/useCopy';
+// import useCopy from '../context/customHooks/useCopy';
 import style from '../styles/css/FavoriteRecipes.module.css';
 import AllEat from '../styles/images/AllEat.svg';
 import All from '../styles/images/All.svg';
 import AllMeals from '../styles/images/AllMeals.svg';
+import LinkCopied from '../components/LinkCopied';
 
 function FavoriteRecipes() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [renderRecipes, setRenderRecipes] = useState(favoriteRecipes);
-  const [showCopyMessage, copyAndShowMessage] = useCopy();
+  const [textCopied, setTextCopied] = useState(false);
 
   useEffect(() => {
     const localStorageFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'))
@@ -19,9 +20,9 @@ function FavoriteRecipes() {
     setRenderRecipes(localStorageFavorites);
   }, []);
 
-  const handleShareClick = (copiedLink) => {
-    copyAndShowMessage(copiedLink);
-  };
+  // const handleShareClick = (copiedLink) => {
+  //   copyAndShowMessage(copiedLink);
+  // };
 
   const handleFilter = (filterType) => {
     if (filterType === 'all') {
@@ -75,11 +76,7 @@ function FavoriteRecipes() {
           Drinks
         </button>
       </div>
-      { showCopyMessage && (
-        <p>
-          Link copied!
-        </p>
-      ) }
+      <LinkCopied textCopied={ textCopied } />
       <section>
         {
           renderRecipes.map((recipe, index) => (
@@ -88,8 +85,9 @@ function FavoriteRecipes() {
               { ...recipe }
               index={ index }
               removeFromFavorite={ removeFromFavorite }
-              handleShareClick={ handleShareClick }
+              // handleShareClick={ handleShareClick }
               cardType="favoriteRecipe"
+              setTextCopied={ setTextCopied }
             />
           ))
         }

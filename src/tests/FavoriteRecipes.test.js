@@ -1,33 +1,23 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { wait } from '@testing-library/user-event/dist/utils';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
 import DefaultProvider from '../context/DefaultProvider';
 
-describe('All tests from DoneRecipes', () => {
+describe('', () => {
   it('', async () => {
-    renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/done-recipes'] });
+    const { history } = renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
 
-    await wait(2000);
-
-    expect(screen.getByRole('heading', {
-      name: /done recipes/i,
-    })).toBeInTheDocument();
-  }, 30000);
-
-  it('Testa todos os botões presentes na página', async () => {
-    // document.execCommand = jest.fn();
-    renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
-
-    await wait(4000);
+    await wait(3000);
     userEvent.click(screen.getByText(/big mac/i));
-    await wait(4000);
+    await wait(2000);
 
     userEvent.click(screen.getByTestId('start-recipe-btn'));
 
     await wait(2000);
+    userEvent.click(screen.getByTestId('favorite-btn'));
 
     for (let i = 0; i < 14; i += 1) {
       userEvent.click(screen.getByTestId(`${i}-ingredient-step`));
@@ -36,8 +26,9 @@ describe('All tests from DoneRecipes', () => {
 
     await wait(4000);
 
-    expect(screen.getByTestId('0-horizontal-share-btn')).toBeInTheDocument();
-    // userEvent.click(screen.getByTestId('0-horizontal-share-btn'));
+    history.push('favorite-recipes');
+    await wait(2000);
+    userEvent.click(screen.getByTestId('0-horizontal-favorite-btn'));
 
     userEvent.click(screen.getByRole('button', {
       name: /all/i,

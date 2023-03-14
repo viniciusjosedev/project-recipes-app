@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
-import useCopy from '../context/customHooks/useCopy';
+// import clipboardCopy from 'clipboard-copy';
+// import useCopy from '../context/customHooks/useCopy';
 import DoneAndFavoriteCard from '../components/DoneAndFavoriteCard';
 import AllEat from '../styles/images/AllEat.svg';
 import All from '../styles/images/All.svg';
 import AllMeals from '../styles/images/AllMeals.svg';
 import style from '../styles/css/DoneRecipes.module.css';
+import LinkCopied from '../components/LinkCopied';
 
 function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState([]);
   const [renderRecipes, setRenderRecipes] = useState([]);
-  const [showCopyMessage, copyAndShowMessage] = useCopy();
+  const [textCopied, setTextCopied] = useState(false);
 
   useEffect(() => {
     const localStorageDoneRecipes = JSON.parse(localStorage
@@ -18,10 +20,6 @@ function DoneRecipes() {
     setDoneRecipes(localStorageDoneRecipes);
     setRenderRecipes(localStorageDoneRecipes);
   }, []);
-
-  const handleShareClick = (copiedLink) => {
-    copyAndShowMessage(copiedLink);
-  };
 
   const handleFilter = (filterType) => {
     // console.log(filterType);
@@ -63,11 +61,7 @@ function DoneRecipes() {
           Drinks
         </button>
       </div>
-      { showCopyMessage && (
-        <p>
-          Link copied!
-        </p>
-      ) }
+      <LinkCopied textCopied={ textCopied } />
       <section>
         {
           renderRecipes.map((recipe, index) => (
@@ -75,8 +69,9 @@ function DoneRecipes() {
               key={ index }
               { ...recipe }
               index={ index }
-              handleShareClick={ handleShareClick }
+              // handleShareClick={ handleShareClick }
               cardType="doneRecipe"
+              setTextCopied={ setTextCopied }
             />
           ))
         }

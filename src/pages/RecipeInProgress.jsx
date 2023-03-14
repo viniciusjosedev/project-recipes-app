@@ -8,6 +8,7 @@ import style from '../styles/css/RecipeInProgress.module.css';
 import HeaderRecipesDetails from '../components/HeaderRecipesDetails';
 import { addProgressInRecipes,
   removeProgressInRecipes, addDoneRecipes } from '../helpers/setLocalStorage';
+import LinkCopied from '../components/LinkCopied';
 
 function RecipeInProgress() {
   const [ingredients, setIngredients] = useState([]);
@@ -29,14 +30,9 @@ function RecipeInProgress() {
 
   useEffect(() => {
     async function init() {
-      if (details.length > 0 && details.some((e) => e[`id${type}`] === id)) {
-        setIngredients(getIngredients(details));
-        handleIcon();
-      } else {
-        const results = await fetchDetails(category, id);
-        setDetails(results);
-        setIngredients(getIngredients(results));
-      }
+      const results = await fetchDetails(category, id);
+      setDetails(results);
+      setIngredients(getIngredients(results));
       const getStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
       if (getStorage !== null
         && Object.keys(getStorage[category]).some((e) => e === id)) {
@@ -72,6 +68,7 @@ function RecipeInProgress() {
           alt="imagem da receita"
           className={ style.imgBackGroundHeader }
         />
+        <LinkCopied textCopied={ showCopyMessage } />
         <p className={ style.pIngredientes }>Ingredientes</p>
         <ul>
           {
@@ -128,11 +125,6 @@ function RecipeInProgress() {
             </>
           )
         }
-        { showCopyMessage && (
-          <p>
-            Link copied!
-          </p>
-        ) }
       </main>
       <div className={ style.divSeparation }>
         <p />

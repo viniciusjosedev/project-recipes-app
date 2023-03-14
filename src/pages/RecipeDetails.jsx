@@ -6,6 +6,7 @@ import style from '../styles/css/RecipeDetails.module.css';
 import DefaultContext from '../context/DefaultContext';
 import useCopy from '../context/customHooks/useCopy';
 import HeaderRecipesDetails from '../components/HeaderRecipesDetails';
+import LinkCopied from '../components/LinkCopied';
 
 function RecipeDetails() {
   const { details, setDetails } = useContext(DefaultContext);
@@ -82,11 +83,7 @@ function RecipeDetails() {
           alt="imagem da receita"
           className={ style.imgBackGroundHeader }
         />
-        { showCopyMessage && (
-          <p>
-            Link copied!
-          </p>
-        ) }
+        <LinkCopied textCopied={ showCopyMessage } />
         <p className={ style.pIngredientes }>Ingredients</p>
         <ul>
           {

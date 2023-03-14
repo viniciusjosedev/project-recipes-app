@@ -20,11 +20,11 @@ function Header({ history: { location: { pathname } } }) {
   const { setSearchWord } = useContext(DefaultContext);
 
   const funcGetImage = (path) => {
+    if (path === 'profile') return iconPerfil;
     if (path === 'done-recipes') return iconDoneRecipes;
     if (path === 'meals') return iconePrato;
     if (path === 'drinks') return iconeTaca;
-    if (path === 'favorite-recipes') return iconFavorites;
-    if (path === 'profile') return iconPerfil;
+    return iconFavorites;
   };
 
   useEffect(() => {

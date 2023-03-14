@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+import { wait } from '@testing-library/user-event/dist/utils';
 import renderWithRouter from './helpers/renderWithRouter';
 import DefaultProvider from '../context/DefaultProvider';
 import App from '../App';
@@ -11,10 +12,10 @@ describe('Testes da página de perfil', () => {
     const userEmail = 'testonildo@TextDecoderStream.com';
     const userPassword = 'StrongP@ssword';
 
-    userEvent.type(screen.getByRole('textbox', {
-      name: /email:/i,
-    }), userEmail);
-    userEvent.type(screen.getByLabelText(/senha:/i), userPassword);
+    await wait(2000);
+
+    userEvent.type(screen.getByTestId('email-input'), userEmail);
+    userEvent.type(screen.getByTestId('password-input'), userPassword);
     userEvent.click(screen.getByRole('button', {
       name: /enter/i,
     }));
@@ -41,9 +42,7 @@ describe('Testes da página de perfil', () => {
     userEvent.click(btnProfile);
     const btnLogout = await screen.findByTestId('profile-logout-btn');
     userEvent.click(btnLogout);
-    expect(screen.getByRole('textbox', {
-      name: /email:/i,
-    })).toBeInTheDocument();
+    expect(screen.getByTestId('email-input')).toBeInTheDocument();
     expect(localStorage.getItem('user')).toEqual(null);
   });
 });

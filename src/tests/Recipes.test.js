@@ -16,7 +16,7 @@ describe('testing the Recipes functions', () => {
 
     userEvent.click(screen.getByTestId(searchTopBtn));
     userEvent.type(screen.getByTestId(searchInput), 'Corba');
-    userEvent.click(screen.getByLabelText('nome'));
+    userEvent.click(screen.getByText(/name/i));
     userEvent.click(screen.getByTestId(exercBtn));
 
     await wait(1000);

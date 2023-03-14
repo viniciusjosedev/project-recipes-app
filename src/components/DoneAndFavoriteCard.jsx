@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import shareIcon from '../styles/images/iconShare.svg';
+import clipboardCopy from 'clipboard-copy';
+import shareIcon from '../styles/images/shareIcon.svg';
 import blackHeartIcon from '../styles/images/blackHeartIcon.svg';
 import style from '../styles/css/DoneAndFavoriteCard.module.css';
 
-function FavoriteRecipeCard(props) {
-  const { index, image, category, name, id, doneDate, type, cardType,
-    removeFromFavorite, nationality, alcoholicOrNot, handleShareClick, tags } = props;
+function FavoriteRecipeCard({ index, image, category, name, id, doneDate, type, cardType,
+  removeFromFavorite, nationality, alcoholicOrNot,
+  tags, setTextCopied }) {
+  const handleShareClick = (copiedLink) => {
+    console.log('aqui');
+    setTextCopied(true);
+    clipboardCopy(copiedLink);
+  };
 
   const url = cardType === 'doneRecipe' ? '/done-recipes' : '/favorite-recipes';
 
@@ -62,18 +68,21 @@ function FavoriteRecipeCard(props) {
             {' '}
             -
             {' '}
-            {/* {category} */}
+            {category}
           </h3>)
           }
           {
             type === 'drink'
         && (
-          <h3 data-testid={ `${index}-horizontal-top-text` }>
-            {alcoholicOrNot}
-          </h3>)
+          <>
+            <h3 data-testid={ `${index}-horizontal-top-text` }>
+              {alcoholicOrNot}
+              { category }
+            </h3>
+            {/* <h3 data-testid={ `${index}-horizontal-top-text` }>{ category }</h3> */}
+          </>)
           }
-          <h3>*</h3>
-          <h3 data-testid={ `${index}-horizontal-top-text` }>{ category }</h3>
+          {/* <h3>*</h3> */}
         </div>
         {
           cardType === 'doneRecipe' && (
@@ -99,19 +108,19 @@ function FavoriteRecipeCard(props) {
 }
 
 FavoriteRecipeCard.propTypes = {
-  index: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
+  alcoholicOrNot: PropTypes.string.isRequired,
+  cardType: PropTypes.string.isRequired, // handleShareClick: PropTypes.func.isRequired,
   category: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   doneDate: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  removeFromFavorite: PropTypes.func.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  image: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
   nationality: PropTypes.string.isRequired,
-  alcoholicOrNot: PropTypes.string.isRequired,
-  cardType: PropTypes.string.isRequired,
-  handleShareClick: PropTypes.func.isRequired,
+  removeFromFavorite: PropTypes.func.isRequired,
+  setTextCopied: PropTypes.func.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default FavoriteRecipeCard;
