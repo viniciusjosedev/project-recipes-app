@@ -8,13 +8,10 @@ export default async function fetchRecipesAndCategoresInitial(path) {
     return { receitas: [requisicao.meals, true],
       category: requisaoCategory.meals };
   }
-  if (path === '/drinks') {
-    const requisicao = await (await fetch(`${BASE_URL_DRINK}search.php?s=`)).json();
-    const requisaoCategory = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')).json();
-    // console.log(requisaoCategory);
-    return { receitas: [requisicao.drinks, true],
-      category: requisaoCategory.drinks };
-  }
+  const requisicao = await (await fetch(`${BASE_URL_DRINK}search.php?s=`)).json();
+  const requisaoCategory = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')).json();
+  return { receitas: [requisicao.drinks, true],
+    category: requisaoCategory.drinks };
 }
 export const fetchRecipes = async (searchType, searchWord, category) => {
   const pathOption = searchType.option === 'ingredient' ? 'filter' : 'search';
@@ -34,12 +31,13 @@ export const fetchRecipes = async (searchType, searchWord, category) => {
 };
 
 export async function fetchCategores(name, path) {
-  if (path === '/meals') {
-    const requisicao = await (await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`)).json();
-    return [requisicao.meals, false];
+  // console.log(name);
+  if (path === '/drinks') {
+    const requisicao = await (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`)).json();
+    return [requisicao.drinks, false];
   }
-  const requisicao = await (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`)).json();
-  return [requisicao.drinks, false];
+  const requisicao = await (await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`)).json();
+  return [requisicao.meals, false];
 }
 
 export const fetchDetails = async (category, id) => {
@@ -47,9 +45,7 @@ export const fetchDetails = async (category, id) => {
     const requisicao = await (await fetch(`${BASE_URL_FOOD}lookup.php?i=${id}`)).json();
     return requisicao[category][0];
   }
-
-  if (category === 'drinks') {
-    const requisicao = await (await fetch(`${BASE_URL_DRINK}lookup.php?i=${id}`)).json();
-    return requisicao[category][0];
-  }
+  const requisicao = await (await fetch(`${BASE_URL_DRINK}lookup.php?i=${id}`)).json();
+  // console.log(requisicao[category][0]);
+  return requisicao[category][0];
 };

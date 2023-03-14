@@ -25,7 +25,7 @@ export default class MockLocalStorage {
           tags: ['difícil', 'para fazer com amigos', 'dias quentes'],
         },
       ],
-
+      favoriteRecipes: [],
     };
   }
 

@@ -1,15 +1,16 @@
 export const addFavoriteRecipes = (type, details) => {
   if (JSON
     .parse(localStorage.getItem('favoriteRecipes')) !== null) {
-    localStorage.setItem('favoriteRecipes', JSON.stringify([...JSON
-      .parse(localStorage.getItem('favoriteRecipes')),
-    { id: details[`id${type}`],
+    const getStorage = JSON
+      .parse(localStorage.getItem('favoriteRecipes'));
+    getStorage.push({ id: details[`id${type}`],
       type: type.toLowerCase(),
       nationality: details.strArea ? details.strArea : '',
       category: details.strCategory,
       alcoholicOrNot: details.strAlcoholic ? details.strAlcoholic : null,
       name: details[`str${type}`],
-      image: details[`str${type}Thumb`] }]));
+      image: details[`str${type}Thumb`] });
+    localStorage.setItem('favoriteRecipes', JSON.stringify(getStorage));
   } else {
     localStorage.setItem('favoriteRecipes', JSON.stringify([
       { id: details[`id${type}`],

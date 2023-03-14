@@ -7,13 +7,21 @@ import App from '../App';
 import DefaultProvider from '../context/DefaultProvider';
 
 describe('All tests from Header', () => {
-  it('', () => {
+  const SEARCH_TOP_BTN = 'search-top-btn';
+  const EXEC_SEARCH_BTN = 'exec-search-btn';
+  it('', async () => {
     renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
 
-    userEvent.click(screen.getByTestId('search-top-btn'));
+    await wait(4000);
+
+    userEvent.click(screen.getByRole('button', {
+      name: /beef/i,
+    }));
+
+    userEvent.click(screen.getByTestId(SEARCH_TOP_BTN));
     userEvent.click(screen.getByText(/ingredient/i));
     userEvent.type(screen.getByRole('textbox'), 'burger');
-    userEvent.click(screen.getByTestId('exec-search-btn'));
+    userEvent.click(screen.getByTestId(EXEC_SEARCH_BTN));
   });
 
   it('', async () => {
@@ -21,10 +29,14 @@ describe('All tests from Header', () => {
 
     await wait(3000);
 
-    userEvent.click(screen.getByTestId('search-top-btn'));
+    screen.getByRole('button', {
+      name: /ordinary drink/i,
+    });
+
+    userEvent.click(screen.getByTestId(SEARCH_TOP_BTN));
     userEvent.click(screen.getByText(/ingredient/i));
     userEvent.type(screen.getByRole('textbox'), 'burger');
-    userEvent.click(screen.getByTestId('exec-search-btn'));
+    userEvent.click(screen.getByTestId(EXEC_SEARCH_BTN));
   });
 
   it('All tests', async () => {
@@ -35,7 +47,7 @@ describe('All tests from Header', () => {
     userEvent.click(screen.getByTestId('profile-top-btn'));
     history.push('/meals');
     await waitFor(() => {
-      userEvent.click(screen.getByTestId('search-top-btn'));
+      userEvent.click(screen.getByTestId(SEARCH_TOP_BTN));
     }, { timeout: 5000 });
 
     history.push('/favorite-recipes');
@@ -50,36 +62,36 @@ describe('All tests from Header', () => {
   it('', () => {
     renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
 
-    userEvent.click(screen.getByTestId('search-top-btn'));
+    userEvent.click(screen.getByTestId(SEARCH_TOP_BTN));
     userEvent.click(screen.getByText(/first letter/i));
     userEvent.type(screen.getByRole('textbox'), 'tomato');
-    userEvent.click(screen.getByTestId('exec-search-btn'));
+    userEvent.click(screen.getByTestId(EXEC_SEARCH_BTN));
   }, 30000);
 
   it('', () => {
     renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
 
-    userEvent.click(screen.getByTestId('search-top-btn'));
+    userEvent.click(screen.getByTestId(SEARCH_TOP_BTN));
     userEvent.click(screen.getByText(/first letter/i));
     userEvent.type(screen.getByRole('textbox'), 't');
-    userEvent.click(screen.getByTestId('exec-search-btn'));
+    userEvent.click(screen.getByTestId(EXEC_SEARCH_BTN));
   });
 
   it('', () => {
     renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
 
-    userEvent.click(screen.getByTestId('search-top-btn'));
+    userEvent.click(screen.getByTestId(SEARCH_TOP_BTN));
     userEvent.click(screen.getByText(/ingredient/i));
     userEvent.type(screen.getByRole('textbox'), 'tomato');
-    userEvent.click(screen.getByTestId('exec-search-btn'));
+    userEvent.click(screen.getByTestId(EXEC_SEARCH_BTN));
   });
 
   it('', () => {
     renderWithRouter(<DefaultProvider><App /></DefaultProvider>, { initialEntries: ['/meals'] });
 
-    userEvent.click(screen.getByTestId('search-top-btn'));
+    userEvent.click(screen.getByTestId(SEARCH_TOP_BTN));
     userEvent.click(screen.getByText(/name/i));
     userEvent.type(screen.getByRole('textbox'), 'burger');
-    userEvent.click(screen.getByTestId('exec-search-btn'));
+    userEvent.click(screen.getByTestId(EXEC_SEARCH_BTN));
   });
 });
