@@ -74,4 +74,4 @@
 ##### OBS 1: O arquivo setupTests.js já vem como default com o React na instalação feita (npx create-react-app .).
 ##### OBS 2: Todos os testes com o Cypress foram devidamente apagados, esta ação envolve proteger a autoria de código, respeitando assim as normas e regras internas da empresa de tecnologia Trybe.
 
-### O denominado grupo 10 é formado por 5 pessoas, são elas: Felipe Matos, Gabriel Amaral, Marcio Araujo, Marco Haiat e Vinicius José.
+### O denominado grupo 25 é formado por 5 pessoas, são elas: Felipe Matos, Gabriel Amaral, Marcio Araujo, Marco Haiat e Vinicius José.
