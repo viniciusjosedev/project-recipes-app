@@ -73,3 +73,5 @@
 ### Todas os demais adições dos arquivos/diretórios do projeto são de autoria do grupo 25, isso inclui: src/pages, src/components, src/api, src/helpers, src/styles, src/tests. As alterações dos demais arquivos soltos na pasta src/ também são de nossa autoria, isso inclui: App.jsx, index.js e index.css.
 ##### OBS 1: O arquivo setupTests.js já vem como default com o React na instalação feita (npx create-react-app .).
 ##### OBS 2: Todos os testes com o Cypress foram devidamente apagados, esta ação envolve proteger a autoria de código, respeitando assim as normas e regras internas da empresa de tecnologia Trybe.
+
+### O denominado grupo 10 é formado por 5 pessoas, são elas: Felipe Matos, Gabriel Amaral, Marcio Araujo, Marco Haiat e Vinicius José.
